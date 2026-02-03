@@ -1,0 +1,26 @@
+name: Tst signing first
+
+# Trigger this workflow on a push
+on: [push]
+
+# Create an environment variable
+env:
+  PROJECT_NAME: HelloWorld
+  PROJECT_VERSION: 0.0.1
+
+# Defines a single job named "build-and-sign-jar"
+jobs:
+  build-and-sign-jar:
+    # Run job on Ubuntu Runner
+    runs-on: ubuntu-latest
+    # When the workflow runs, this is the name that is logged
+    name: CodeSigner on Java with Maven
+    steps:
+      # 1) Check out the source code so that the workflow can access it.
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: setup credentials helper
+        shell: bash
+        run: |
+          cat README.md
