@@ -1,11 +1,11 @@
-name: Test Signing
+name: CodeSign Demonstration
 
 # Trigger this workflow on a push
 on: [push]
 
 # Create an environment variable
 env:
-  PROJECT_NAME: HelloWorld
+  PROJECT_NAME: CodeSignFile
   PROJECT_VERSION: 0.0.1
 
 # Defines a single job named "build-and-sign-jar"
@@ -16,16 +16,17 @@ jobs:
     # When the workflow runs, this is the name that is logged
     name: CodeSigner on Java with Maven
     steps:
-      # 1) Check out the source code so that the workflow can access it.
+      # 1) Check out the source code so that the workflow can access to the unsigned file
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # A debugging step (Can be removed)
       - name: setup credentials helper
         shell: bash
         run: |
           cat README.md
 
-      # 5) This is the step where the created JAR (artifact) files will be signed with CodeSignTool.
+      # 2) This is the step where the file(See file_path) will be signed with CodeSignTool and exported
       - name: Sign Artifact with CodeSignTool
         uses: sslcom/esigner-codesign@develop
         with:
@@ -48,14 +49,14 @@ jobs:
           # Environment Name, For Production 'PROD' or For Staging 'TEST'
           environment_name: TEST
 
-        # 6) This uploads artifacts from your workflow allowing you to share data between jobs and store data once a workflow is complete
+        # 3) This uploads artifacts from your GitHub action allowing you to share data between jobs and store data once a workflow is complete
       - name: Upload Signed Files
         uses: actions/upload-artifact@v4
         with:
           name: esbuild.exe
           path: signed/esbuild.exe
 
-      - name: List the Readme
+      # A debugging step (Can be removed)
         shell: bash
         run: |
           cat README.md
