@@ -40,7 +40,7 @@ jobs:
           # OAuth TOTP Secret (https://www.ssl.com/how-to/automate-esigner-ev-code-signing)
           totp_secret: RDXYgV9qju+6/7GnMf1vCbKexXVJmUVr+86Wq/8aIGg=
           # Path of code object to be signed. (DLL, JAR, EXE, MSI files vb... )
-          file_path: README.md
+          file_path: input/esbuild.exe
           # Directory where signed code object(s) will be written.
           output_path: signed
           # Scan code before sign
@@ -52,8 +52,8 @@ jobs:
       - name: Upload Signed Files
         uses: actions/upload-artifact@v4
         with:
-          name: README.md
-          path: signed/README.md
+          name: esbuild.exe
+          path: signed/esbuild.exe
 
       - name: List the Readme
         shell: bash
