@@ -9,7 +9,7 @@ env:
   INPUT_FILENAME: esbuild.exe
   OUTPUT_FOLDER: output
 
-# Defines a single job named "build-and-sign-jar" 
+# Defines a single job named "build-and-sign-jar"  
 jobs:
   build-and-sign-jar:
     # Run job on Ubuntu Runner
