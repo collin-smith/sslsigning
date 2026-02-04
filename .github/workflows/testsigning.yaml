@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{env.INPUT_FILENAME}}
-          path: ${{env.OUTPUT_FOLDER}/${{env.INPUT_FILENAME}}
+          path: ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}}
 
       # A debugging step (Can be removed)
       - name: debugging step
