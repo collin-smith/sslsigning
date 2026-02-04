@@ -42,7 +42,7 @@ jobs:
           # Path of code object to be signed. (DLL, JAR, EXE, MSI files vb... )
           file_path: README.md
           # Directory where signed code object(s) will be written.
-          output_path: /signed
+          output_path: signed
           # Scan code before sign
           malware_block: false
           # Environment Name, For Production 'PROD' or For Staging 'TEST'
@@ -53,7 +53,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: README.md
-          path: ./signed/README.md
+          path: signed/README.md
 
       - name: List the Readme
         shell: bash
