@@ -1,6 +1,6 @@
 name: CodeSign Demonstration
 
-# Trigger this workflow on a push 
+# Trigger this workflow on a push  
 on: [push]
 
 # Environment Variables for configuration
