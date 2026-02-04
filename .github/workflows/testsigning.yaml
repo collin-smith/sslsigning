@@ -3,7 +3,7 @@ name: CodeSign Demonstration
 # Trigger this workflow on a push
 on: [push]
 
-# Create an environment variable
+# Environment Variables for configuration
 env:
   INPUT_FOLDER: input
   INPUT_FILENAME: esbuild.exe
@@ -20,12 +20,6 @@ jobs:
       # 1) Check out the source code so that the workflow can access to the unsigned file
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      # A debugging step (Can be removed)
-      - name: debugging step
-        shell: bash
-        run: |
-          cat README.md
 
       # 2) This is the step where the file(See file_path) will be signed with CodeSignTool and exported
       - name: Sign Artifact with CodeSignTool
@@ -50,15 +44,9 @@ jobs:
           # Environment Name, For Production 'PROD' or For Staging 'TEST'
           environment_name: TEST
 
-        # 3) This uploads artifacts from your GitHub action allowing you to share data between jobs and store data once a workflow is complete
+      # 3) This uploads artifacts from your GitHub action allowing you to share data between jobs and store data once a workflow is complete
       - name: Upload Signed File
         uses: actions/upload-artifact@v4
         with:
           name: ${{env.INPUT_FILENAME}}
           path: ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}}
-
-      # A debugging step (Can be removed)
-      - name: debugging step
-        shell: bash
-        run: |
-          cat README.md
