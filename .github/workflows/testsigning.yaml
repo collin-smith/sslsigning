@@ -1,6 +1,6 @@
 name: CodeSign Demonstration
 
-# Trigger this workflow on a push
+# Trigger this workflow on a push 
 on: [push]
 
 # Environment Variables for configuration
@@ -28,13 +28,13 @@ jobs:
           # Sign and timestamp code object.
           command: sign
           # SSL.com account username
-          username: esigner_demo
+          username: ${{ secrets.username }}
           # SSL.com account password.
-          password: esignerDemo#1
+          password: ${{ secrets.password }}
           # Credential ID for signing certificate.
-          credential_id: 8b072e22-7685-4771-b5c6-48e46614915f
+          credential_id: ${{ secrets.credential_id }}
           # OAuth TOTP Secret (https://www.ssl.com/how-to/automate-esigner-ev-code-signing)
-          totp_secret: RDXYgV9qju+6/7GnMf1vCbKexXVJmUVr+86Wq/8aIGg=
+          totp_secret: ${{ secrets.totp_secret }}
           # Path of code object to be signed. (DLL, JAR, EXE, MSI files vb... )
           file_path: ${{env.INPUT_FOLDER}}/${{env.INPUT_FILENAME}}
           # Directory where signed code object(s) will be written.
@@ -74,3 +74,14 @@ jobs:
           git add ${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}/${{env.INPUT_FILENAME}}
           git commit -m "docs: add signed artifact in folder ${{env.TIMESTAMP}} [skip ci]"
           git push
+
+      # 6) Upload the signed file to S3
+      - name: Upload to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          # Uploading to a timestamped path in S3 to match your repo structure
+          aws s3 cp ${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}/${{env.INPUT_FILENAME}} \
+            s3://${{ secrets.S3_BUCKET_NAME }}/signed-builds/${{env.TIMESTAMP}}/${{env.INPUT_FILENAME}}
