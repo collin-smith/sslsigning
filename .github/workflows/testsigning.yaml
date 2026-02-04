@@ -50,3 +50,21 @@ jobs:
         with:
           name: ${{env.INPUT_FILENAME}}
           path: ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}}
+
+    # 4) Generate Timestamp
+      - name: Get current date
+        id: date
+        run: echo "TIMESTAMP=$(date +'%Y%m%d_%H%M%S')" >> $GITHUB_ENV
+
+      # 5) Commit the signed file with timestamp
+      - name: Commit and Push Signed Artifact
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Create a copy with the timestamped name
+          cp ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}} ${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}_${{env.INPUT_FILENAME}}
+          
+          git add ${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}_${{env.INPUT_FILENAME}}
+          git commit -m "docs: add signed artifact ${{env.TIMESTAMP}} [skip ci]"
+          git push
