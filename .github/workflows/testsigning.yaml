@@ -5,8 +5,9 @@ on: [push]
 
 # Create an environment variable
 env:
-  PROJECT_NAME: CodeSignFile
-  PROJECT_VERSION: 0.0.1
+  INPUT_FOLDER: input
+  INPUT_FILENAME: esbuild.exe
+  OUTPUT_FOLDER: output
 
 # Defines a single job named "build-and-sign-jar"
 jobs:
@@ -21,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
 
       # A debugging step (Can be removed)
-      - name: setup credentials helper
+      - name: debugging step
         shell: bash
         run: |
           cat README.md
@@ -41,23 +42,23 @@ jobs:
           # OAuth TOTP Secret (https://www.ssl.com/how-to/automate-esigner-ev-code-signing)
           totp_secret: RDXYgV9qju+6/7GnMf1vCbKexXVJmUVr+86Wq/8aIGg=
           # Path of code object to be signed. (DLL, JAR, EXE, MSI files vb... )
-          file_path: input/esbuild.exe
+          file_path: ${{env.INPUT_FOLDER}}/${{env.INPUT_FILENAME}}
           # Directory where signed code object(s) will be written.
-          output_path: signed
+          output_path: ${{env.OUTPUT_FOLDER}
           # Scan code before sign
           malware_block: false
           # Environment Name, For Production 'PROD' or For Staging 'TEST'
           environment_name: TEST
 
         # 3) This uploads artifacts from your GitHub action allowing you to share data between jobs and store data once a workflow is complete
-      - name: Upload Signed Files
+      - name: Upload Signed File
         uses: actions/upload-artifact@v4
         with:
-          name: esbuild.exe
-          path: signed/esbuild.exe
+          name: ${{env.INPUT_FILENAME}}
+          path: ${{env.OUTPUT_FOLDER}/${{env.INPUT_FILENAME}}
 
       # A debugging step (Can be removed)
-      - name: setup credentials helper
+      - name: debugging step
         shell: bash
         run: |
           cat README.md
