@@ -1,4 +1,4 @@
-name: Tst signing first
+name: Test Signing
 
 # Trigger this workflow on a push
 on: [push]
@@ -21,6 +21,41 @@ jobs:
         uses: actions/checkout@v2
 
       - name: setup credentials helper
+        shell: bash
+        run: |
+          cat README.md
+
+      # 5) This is the step where the created JAR (artifact) files will be signed with CodeSignTool.
+      - name: Sign Artifact with CodeSignTool
+        uses: sslcom/esigner-codesign@develop
+        with:
+          # Sign and timestamp code object.
+          command: sign
+          # SSL.com account username
+          username: esigner_demo
+          # SSL.com account password.
+          password: esignerDemo#1
+          # Credential ID for signing certificate.
+          credential_id: 8b072e22-7685-4771-b5c6-48e46614915f
+          # OAuth TOTP Secret (https://www.ssl.com/how-to/automate-esigner-ev-code-signing)
+          totp_secret: RDXYgV9qju+6/7GnMf1vCbKexXVJmUVr+86Wq/8aIGg=
+          # Path of code object to be signed. (DLL, JAR, EXE, MSI files vb... )
+          file_path: README.md
+          # Directory where signed code object(s) will be written.
+          output_path: /signed
+          # Scan code before sign
+          malware_block: false
+          # Environment Name, For Production 'PROD' or For Staging 'TEST'
+          environment_name: TEST
+
+        # 6) This uploads artifacts from your workflow allowing you to share data between jobs and store data once a workflow is complete
+      - name: Upload Signed Files
+        uses: actions/upload-artifact@v2
+        with:
+          name: README.md
+          path: ./signed/README.md
+
+      - name: List the Readme
         shell: bash
         run: |
           cat README.md
