@@ -56,15 +56,21 @@ jobs:
         id: date
         run: echo "TIMESTAMP=$(date +'%Y%m%d_%H%M%S')" >> $GITHUB_ENV
 
-      # 5) Commit the signed file with timestamp
+      # 5) Commit the signed file in a timestamped subfolder
+      #Note: on this step you will have to give your Actions Read and Write permissions
+      #In your github repository, go to settings, Actions/General, update Workflow permissions to be Read and Write Permissions and save
       - name: Commit and Push Signed Artifact
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Create a copy with the timestamped name
-          cp ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}} ${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}_${{env.INPUT_FILENAME}}
+          # 1. Create the subfolder path: output/20260204_205957/
+          mkdir -p ${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}
           
-          git add ${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}_${{env.INPUT_FILENAME}}
-          git commit -m "docs: add signed artifact ${{env.TIMESTAMP}} [skip ci]"
+          # 2. Move or Copy the signed file into that subfolder
+          cp ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}} ${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}/${{env.INPUT_FILENAME}}
+          
+          # 3. Add the new folder and push
+          git add ${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}/${{env.INPUT_FILENAME}}
+          git commit -m "docs: add signed artifact in folder ${{env.TIMESTAMP}} [skip ci]"
           git push
