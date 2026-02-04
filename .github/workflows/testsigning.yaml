@@ -44,7 +44,7 @@ jobs:
           # Path of code object to be signed. (DLL, JAR, EXE, MSI files vb... )
           file_path: ${{env.INPUT_FOLDER}}/${{env.INPUT_FILENAME}}
           # Directory where signed code object(s) will be written.
-          output_path: ${{env.OUTPUT_FOLDER}
+          output_path: ${{env.OUTPUT_FOLDER}}
           # Scan code before sign
           malware_block: false
           # Environment Name, For Production 'PROD' or For Staging 'TEST'
