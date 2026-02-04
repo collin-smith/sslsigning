@@ -57,6 +57,7 @@ jobs:
           path: signed/esbuild.exe
 
       # A debugging step (Can be removed)
+      - name: setup credentials helper
         shell: bash
         run: |
           cat README.md
