@@ -1,4 +1,4 @@
-name: CodeSign Demonstration
+name: CodeSign Demonstration 
 
 # Trigger this workflow on a push  
 on: [push]
