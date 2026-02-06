@@ -5,7 +5,7 @@ on: [push]
 
 # Environment Variables for configuration
 env:
-  # Binary file location in the Github repository
+  # Binary file location in the Github repository 
   INPUT_FOLDER: input
   INPUT_FILENAME: esbuild.exe
   # The base output folder in the Github repository
