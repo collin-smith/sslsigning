@@ -11,13 +11,13 @@ env:
   # The base output folder in the Github repository
   OUTPUT_FOLDER: output
 
-# Defines a single job named "build-and-sign-jar"  
+# Defines a single job named "signbinary-and-pushtos3"  
 jobs:
-  build-and-sign-jar:
+  signbinary-and-pushtos3:
     # Run job on Ubuntu Runner
     runs-on: ubuntu-latest
     # When the workflow runs, this is the name that is logged
-    name: CodeSigner on Java with Maven
+    name: CodeSigner on Java pushing to AWS S3 with Cloudfront
     steps:
       # 1) Check out the source code
       - name: Checkout Repository
