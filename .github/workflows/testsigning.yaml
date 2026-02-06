@@ -53,15 +53,13 @@ jobs:
           name: ${{env.INPUT_FILENAME}}
           path: ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}}
 
-      # 4) Generate a datestamp
-      - name: Get current date
-        id: date
-        run: echo "TIMESTAMP=$(date +'%Y%m%d_%H%M%S')" >> $GITHUB_ENV
-
-      # 5) Generate the actual folder or s3 key variable using the datestamp
-      - name:
-        id: file path
-        run: echo "Filepath=${{env.OUTPUT_FOLDER}}/${{env.TIMESTAMP}}" >> $GITHUB_ENV
+      # 4 & 5) Consolidated: Generate Timestamp and Full Path
+      - name: Generate Build Metadata
+        id: metadata
+        run: |
+          TS=$(date +'%Y%m%d_%H%M%S')
+          echo "TIMESTAMP=$TS" >> $GITHUB_ENV
+          echo "FILEPATH=${{ env.OUTPUT_FOLDER }}/$TS" >> $GITHUB_ENV
 
 
       # 6) Commit and push the  the signed file in a timestamped subfolder
