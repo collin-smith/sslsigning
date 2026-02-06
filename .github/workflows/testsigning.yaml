@@ -90,4 +90,4 @@ jobs:
         run: |
           # Uploading to a timestamped path in S3 to match your repo structure
           aws s3 cp  ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}} \
-            s3://${{ secrets.S3_BUCKET_NAME }}/${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}}/${{env.INPUT_FILENAME}}
+            s3://${{ secrets.S3_BUCKET_NAME }}/${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}}
