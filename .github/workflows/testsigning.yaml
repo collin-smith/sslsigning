@@ -5,10 +5,10 @@ on: [push]
 
 # Environment Variables for configuration
 env:
-# Binary file location in the Github repository
+  # Binary file location in the Github repository
   INPUT_FOLDER: input
   INPUT_FILENAME: esbuild.exe
-# The base output folder in the Github repository if you want to push the signed binary file to the Github repo
+  # The base output folder in the Github repository
   OUTPUT_FOLDER: output
 
 # Defines a single job named "build-and-sign-jar"  
@@ -19,39 +19,30 @@ jobs:
     # When the workflow runs, this is the name that is logged
     name: CodeSigner on Java with Maven
     steps:
-      # 1) Check out the source code so that the workflow can access to the unsigned file
+      # 1) Check out the source code
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2) This is the step where the file(See file_path) will be signed with CodeSignTool and exported
+      # 2) Sign the file with CodeSignTool
       - name: Sign Artifact with CodeSignTool
         uses: sslcom/esigner-codesign@develop
         with:
-          # Sign and timestamp code object.
           command: sign
-          # SSL.com account username
           username: ${{ secrets.username }}
-          # SSL.com account password.
           password: ${{ secrets.password }}
-          # Credential ID for signing certificate.
           credential_id: ${{ secrets.credential_id }}
-          # OAuth TOTP Secret (https://www.ssl.com/how-to/automate-esigner-ev-code-signing)
           totp_secret: ${{ secrets.totp_secret }}
-          # Path of code object to be signed. (DLL, JAR, EXE, MSI files vb... )
-          file_path: ${{env.INPUT_FOLDER}}/${{env.INPUT_FILENAME}}
-          # Directory where signed code object(s) will be written.
-          output_path: ${{env.OUTPUT_FOLDER}}
-          # Scan code before sign
+          file_path: ${{ env.INPUT_FOLDER }}/${{ env.INPUT_FILENAME }}
+          output_path: ${{ env.OUTPUT_FOLDER }}
           malware_block: false
-          # Environment Name, For Production 'PROD' or For Staging 'TEST'
           environment_name: TEST
 
-      # 3) This uploads artifacts from your GitHub action allowing you to share data between jobs and store data once a workflow is complete
+      # 3) Upload artifacts to GitHub Actions
       - name: Upload Signed File
         uses: actions/upload-artifact@v4
         with:
-          name: ${{env.INPUT_FILENAME}}
-          path: ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}}
+          name: ${{ env.INPUT_FILENAME }}
+          path: ${{ env.OUTPUT_FOLDER }}/${{ env.INPUT_FILENAME }}
 
       # 4 & 5) Consolidated: Generate Timestamp and Full Path
       - name: Generate Build Metadata
@@ -61,26 +52,23 @@ jobs:
           echo "TIMESTAMP=$TS" >> $GITHUB_ENV
           echo "FILEPATH=${{ env.OUTPUT_FOLDER }}/$TS" >> $GITHUB_ENV
 
-
-      # 6) Commit and push the  the signed file in a timestamped subfolder
-      #Note: on this step you will have to give your Actions Read and Write permissions
-      #In your github repository, go to settings, Actions/General, update Workflow permissions to be Read and Write Permissions and save
+      # 6) Commit and push the signed file in a timestamped subfolder
       - name: Commit and Push Signed Artifact
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 1. Create the subfolder path: output/20260204_205957/
-          mkdir -p ${{env.FILEPATH}}
+          # Create the subfolder path
+          mkdir -p ${{ env.FILEPATH }}
           
-          # 2. Move or Copy the signed file into that subfolder
-          cp ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}} ${{env.FILEPATH}}/${{env.INPUT_FILENAME}}
+          # Move or Copy the signed file into that subfolder
+          cp ${{ env.OUTPUT_FOLDER }}/${{ env.INPUT_FILENAME }} ${{ env.FILEPATH }}/${{ env.INPUT_FILENAME }}
           
-          # 3. Add the new folder and push
-          git add ${{env.FILEPATH}}/${{env.INPUT_FILENAME}}
-          git commit -m "docs: add signed artifact in folder ${{env.TIMESTAMP}} [skip ci]"
+          # Add the new folder and push
+          git add ${{ env.FILEPATH }}/${{ env.INPUT_FILENAME }}
+          git commit -m "docs: add signed artifact in folder ${{ env.TIMESTAMP }} [skip ci]"
           git push
- 
+
       # 7) Upload the signed file to S3
       - name: Upload to S3
         env:
@@ -88,6 +76,16 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         run: |
-          # Uploading to a timestamped path in S3 to match your repo structure
-          aws s3 cp  ${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}} \
-            s3://${{ secrets.S3_BUCKET_NAME }}/${{env.OUTPUT_FOLDER}}/${{env.INPUT_FILENAME}}
+          aws s3 cp ${{ env.FILEPATH }}/${{ env.INPUT_FILENAME }} \
+            s3://${{ secrets.S3_BUCKET_NAME }}/signed-builds/${{ env.TIMESTAMP }}/${{ env.INPUT_FILENAME }}
+
+      # 8) Invalidate CloudFront so the new file is available immediately
+      - name: Invalidate CloudFront
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E2Z6BQTS2F0YM7 \
+            --paths "/signed-builds/${{ env.TIMESTAMP }}/*"
