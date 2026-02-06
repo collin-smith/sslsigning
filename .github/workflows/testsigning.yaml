@@ -76,7 +76,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         run: |
-          aws s3 cp ${{ env.FILEPATH }}/${{ env.INPUT_FILENAME }} \
+          aws s3 cp ${{ env.OUTPUT_FOLDER }}/${{ env.INPUT_FILENAME }} \
             s3://${{ secrets.S3_BUCKET_NAME }}/${{ env.OUTPUT_FOLDER }}/${{ env.TIMESTAMP }}/${{ env.INPUT_FILENAME }}
 
       # 8) Invalidate CloudFront so the new file is available immediately
