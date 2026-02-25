@@ -1,8 +1,18 @@
 name: CodeSign Demonstration  
 
 # Trigger this workflow on a push 
-on: [push]
-
+#on: [push]
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      Tenant_id:
+        description: 'Tenant ID'
+        required: true
+      url:
+        description: 'URL'
+        required: true
+        
 # Environment Variables for configuration
 env:
   # Binary file location in the Github repository 
@@ -88,4 +98,5 @@ jobs:
         run: |
           aws cloudfront create-invalidation \
             --distribution-id E2Z6BQTS2F0YM7 \
+
             --paths "/${{ env.OUTPUT_FOLDER }}/${{ env.TIMESTAMP }}/*"
