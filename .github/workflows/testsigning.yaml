@@ -90,13 +90,15 @@ jobs:
             s3://${{ secrets.S3_BUCKET_NAME }}/${{ env.OUTPUT_FOLDER }}/${{ env.TIMESTAMP }}/${{ env.INPUT_FILENAME }}
 
       # 7) Invalidate CloudFront so the new file is available immediately
-      - name: Invalidate CloudFront
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+      - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation \
             --distribution-id E2Z6BQTS2F0YM7 \
+            --invalidation-batch '{
+              "Paths": {
+                "Quantity": 1,
+                "Items": ["/output/'"${TIMESTAMP}"'/*"]
+              },
+              "CallerReference": "'"${TIMESTAMP}"'"
+            }'
 
-            --paths "/${{ env.OUTPUT_FOLDER }}/${{ env.TIMESTAMP }}/*"
