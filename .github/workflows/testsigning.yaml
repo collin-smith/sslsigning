@@ -48,6 +48,14 @@ jobs:
           malware_block: false
           environment_name: TEST
 
+      - name: Debug Output Folder
+        run: |
+          echo "=== Output folder contents ==="
+          ls -la ${{ env.OUTPUT_FOLDER }}/ || echo "Output folder does not exist"
+          echo "=== Working directory ==="
+          ls -la
+          find . -name "*.exe" 2>/dev/null || echo "No .exe files found anywhere"
+
       # 3) Upload artifacts to GitHub Actions
       - name: Upload Signed File
         uses: actions/upload-artifact@v4
@@ -98,3 +106,4 @@ jobs:
               },
               "CallerReference": "'"${TIMESTAMP}"'"
             }'
+
