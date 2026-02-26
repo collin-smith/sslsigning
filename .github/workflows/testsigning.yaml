@@ -91,6 +91,10 @@ jobs:
 
       # 7) Invalidate CloudFront so the new file is available immediately
       - name: Invalidate CloudFront cache
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         run: |
           aws cloudfront create-invalidation \
             --distribution-id E2Z6BQTS2F0YM7 \
@@ -101,4 +105,5 @@ jobs:
               },
               "CallerReference": "'"${TIMESTAMP}"'"
             }'
+
 
