@@ -15,11 +15,12 @@ on:
         
 # Environment Variables for configuration
 env:
-  # Binary file location in the Github repository 
   INPUT_FOLDER: input
   INPUT_FILENAME: esbuild.exe
-  # The base output folder in the Github repository
   OUTPUT_FOLDER: output
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
 
 # Defines a single job named "signbinary-and-pushtos3"  
 jobs:
@@ -81,20 +82,12 @@ jobs:
 
       # 6) Upload the signed file to S3 with a timestamped s3 key(ie. output/20260206_202205/)
       - name: Upload to S3 
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         run: |
           aws s3 cp ${{ env.OUTPUT_FOLDER }}/${{ env.INPUT_FILENAME }} \
             s3://${{ secrets.S3_BUCKET_NAME }}/${{ env.OUTPUT_FOLDER }}/${{ env.TIMESTAMP }}/${{ env.INPUT_FILENAME }}
 
       # 7) Invalidate CloudFront so the new file is available immediately
       - name: Invalidate CloudFront cache
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         run: |
           aws cloudfront create-invalidation \
             --distribution-id E2Z6BQTS2F0YM7 \
@@ -105,5 +98,3 @@ jobs:
               },
               "CallerReference": "'"${TIMESTAMP}"'"
             }'
-
-
