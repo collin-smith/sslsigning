@@ -30,6 +30,11 @@ jobs:
     # When the workflow runs, this is the name that is logged
     name: CodeSigner on Java pushing to AWS S3 with Cloudfront
     steps:
+      - name: Print Inputs
+        run: |
+          echo "Tenant ID: ${{ github.event.inputs.Tenant_id }}"
+          echo "URL: ${{ github.event.inputs.url }}"
+          
       # 1) Check out the source code
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -106,4 +111,5 @@ jobs:
               },
               "CallerReference": "'"${TIMESTAMP}"'"
             }'
+
 
