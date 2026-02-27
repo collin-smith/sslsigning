@@ -34,6 +34,10 @@ jobs:
         run: |
           echo "Tenant ID: ${{ github.event.inputs.Tenant_id }}"
           echo "URL: ${{ github.event.inputs.url }}"
+
+      # 1) Check out the source code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
           
       - name: Debug and Replace
         run: |
@@ -63,9 +67,6 @@ jobs:
           cat "$REAL_PATH"
           echo "::endgroup::"
           
-      # 1) Check out the source code
-      - name: Checkout Repository
-        uses: actions/checkout@v4
 
       # 2) Sign the file with CodeSignTool
       - name: Sign Artifact with CodeSignTool
@@ -139,6 +140,7 @@ jobs:
               },
               "CallerReference": "'"${TIMESTAMP}"'"
             }'
+
 
 
 
