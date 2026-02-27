@@ -35,6 +35,19 @@ jobs:
           echo "Tenant ID: ${{ github.event.inputs.Tenant_id }}"
           echo "URL: ${{ github.event.inputs.url }}"
           
+      - name: Replace Placeholders and Display File
+        run: |
+          # Perform the replacements using '|' as a delimiter
+          sed -i "s|{{tenant_id}}|${{ github.event.inputs.Tenant_id }}|g" template/cwClient.aip
+          sed -i "s|{{backend_url}}|${{ github.event.inputs.url }}|g" template/cwClient.aip
+          
+          echo "✅ Placeholders replaced in template/cwClient.aip"
+          
+          # Display the file contents in a collapsible group in the logs
+          echo "::group::View updated cwClient.aip contents"
+          cat template/cwClient.aip
+          echo "::endgroup::"         
+          
       # 1) Check out the source code
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -111,5 +124,6 @@ jobs:
               },
               "CallerReference": "'"${TIMESTAMP}"'"
             }'
+
 
 
