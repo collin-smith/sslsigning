@@ -37,15 +37,18 @@ jobs:
           
       - name: Replace Placeholders and Display File
         run: |
-          # Perform the replacements using '|' as a delimiter
-          sed -i "s|{{tenant_id}}|${{ github.event.inputs.Tenant_id }}|g" template/cwClient.aip
-          sed -i "s|{{backend_url}}|${{ github.event.inputs.url }}|g" template/cwClient.aip
-          
-          echo "✅ Placeholders replaced in template/cwClient.aip"
-          
-          # Display the file contents in a collapsible group in the logs
+          # Define the exact relative path from the repo root
+          FILE_PATH="template/cwClient.aip"
+
+          # Perform the replacements using '|' as a delimiter to handle URLs
+          sed -i "s|{{tenant_id}}|${{ github.event.inputs.Tenant_id }}|g" "$FILE_PATH"
+          sed -i "s|{{backend_url}}|${{ github.event.inputs.url }}|g" "$FILE_PATH"
+
+          echo "✅ Successfully updated $FILE_PATH"
+
+          # Display the contents in a clickable group in the logs
           echo "::group::View updated cwClient.aip contents"
-          cat template/cwClient.aip
+          cat "$FILE_PATH"
           echo "::endgroup::"         
           
       # 1) Check out the source code
@@ -124,6 +127,7 @@ jobs:
               },
               "CallerReference": "'"${TIMESTAMP}"'"
             }'
+
 
 
 
