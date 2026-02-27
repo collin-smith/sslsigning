@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="9.4" version="22.5" Modules="enterprise" RootPath="." Language="en" Id="{A907CF98-E457-4ACE-9A78-E3ED6CA27975}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiValidationComponent">
+    <ROW Table="File" Column="Sequence" MinValue="1" MaxValue="2147483647" Description="Sequence with respect to the media images; order must track cabinet order." Options="0" ColumnType="3" ColumnIndex="7" ColumnSize="4" MsiKey="File#Sequence"/>
+    <ROW Table="Media" Column="LastSequence" MinValue="0" MaxValue="2147483647" Description="File sequence number for the last file for this media." Options="0" ColumnType="3" ColumnIndex="1" ColumnSize="4" MsiKey="Media#LastSequence"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
+    <ROW Property="AI_RUN_AS_ADMIN" Value="0"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPNOMODIFY" MultiBuildValue="DefaultBuild:1"/>
+    <ROW Property="ARPNOREMOVE" Value="1"/>
+    <ROW Property="ARPNOREPAIR" Value="1" MultiBuildValue="DefaultBuild:1"/>
+    <ROW Property="ARPPRODUCTICON" Value="insticon.exe" Type="8"/>
+    <ROW Property="ARPSYSTEMCOMPONENT" Value="1"/>
+    <ROW Property="Alert" Value="Alert" Type="2"/>
+    <ROW Property="BannerBitmap" Value="banner.jpg" MultiBuildValue="DefaultBuild:banner1.jpg" Type="1" MsiKey="BannerBitmap"/>
+    <ROW Property="CWCLIENT_EXISTS" Value="0"/>
+    <ROW Property="CW_CLIENT_PWD" Value="Admin"/>
+    <ROW Property="CW_CUSTOM_MSG" Value="0"/>
+    <ROW Property="CW_INSTALLED" Value="1"/>
+    <ROW Property="CW_PARAMS" Value="0"/>
+    <ROW Property="DialogBitmap" Value="dialog.jpg" MultiBuildValue="DefaultBuild:dialog1.jpg" Type="1" MsiKey="DialogBitmap"/>
+    <ROW Property="GRPNAME" Value="0"/>
+    <ROW Property="InstallerIcon" Value="insticon.ico" Type="1" MsiKey="InstallerIcon"/>
+    <ROW Property="Manufacturer" Value="CurrentWare" ValueLocId="*"/>
+    <ROW Property="ProductCode" Value="1033:{6922E446-567E-4773-A29B-56FEB009E5A9} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="cwClient" ValueLocId="*"/>
+    <ROW Property="ProductVersion" Value="11.0.2.0" Options="32"/>
+    <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;UPGRADE_1;UPGRADE_2;UPGRADE_3;AI_SETUPEXEPATH;SETUPEXEDIR"/>
+    <ROW Property="USERPARAMS" Value="0"/>
+    <ROW Property="UpgradeCode" Value="{848B3A0E-58A7-4C16-A503-0037A2ED29EC}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60Display" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="Bit_Dir" Directory_Parent="Drivers_1_Dir" DefaultDir=".:64Bit" DirectoryOptions="3"/>
+    <ROW Directory="Drivers_1_Dir" Directory_Parent="System64Folder" DefaultDir="Drivers"/>
+    <ROW Directory="Drivers_Dir" Directory_Parent="SystemFolder" DefaultDir="Drivers"/>
+    <ROW Directory="Logs_Dir" Directory_Parent="NewFolder_2_Dir" DefaultDir="Logs"/>
+    <ROW Directory="NewFolder_2_Dir" Directory_Parent="SystemFolder" DefaultDir="wcsystck"/>
+    <ROW Directory="NewFolder_Dir" Directory_Parent="Drivers_1_Dir" DefaultDir=".:Apfddrv"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="System64Folder" Directory_Parent="TARGETDIR" DefaultDir="System~2|System64Folder" IsPseudoRoot="1"/>
+    <ROW Directory="SystemFolder" Directory_Parent="TARGETDIR" DefaultDir="System~1|SystemFolder" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="Temp_Dir" Directory_Parent="WindowsFolder" DefaultDir="Temp"/>
+    <ROW Directory="Win732_Dir" Directory_Parent="SystemFolder" DefaultDir=".:Win732" DirectoryOptions="3"/>
+    <ROW Directory="Win764_Dir" Directory_Parent="SystemFolder" DefaultDir=".:Win764" DirectoryOptions="3"/>
+    <ROW Directory="Win7_Dir" Directory_Parent="Drivers_1_Dir" DefaultDir=".:Win7"/>
+    <ROW Directory="Win8Adv_Dir" Directory_Parent="Drivers_1_Dir" DefaultDir=".:Win8Adv" DirectoryOptions="3"/>
+    <ROW Directory="WindowsFolder" Directory_Parent="TARGETDIR" DefaultDir="WINDOW~1|WindowsFolder" IsPseudoRoot="1"/>
+    <ROW Directory="wcsystck_Dir" Directory_Parent="System64Folder" DefaultDir="wcsystck"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="AI_ExePath" ComponentId="{079F2172-8FD1-4727-8034-A03A66D36380}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
+    <ROW Component="COMCatLookup.dll" ComponentId="{734B3E18-A210-4BC8-A7DA-654092851A59}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="COMCatLookup.dll"/>
+    <ROW Component="CONNECTIVITY_MODE" ComponentId="{EBA3EAF3-6C92-43D7-B745-2FEE3DA10ABF}" Directory_="APPDIR" Attributes="260" KeyPath="CONNECTIVITY_MODE"/>
+    <ROW Component="CurrentControlSet" ComponentId="{91ADD678-45E7-4A9E-A97D-7F1D07BB4DAF}" Directory_="APPDIR" Attributes="260" KeyPath="CurrentControlSet"/>
+    <ROW Component="GrantAccess.exe_1" ComponentId="{636FDFA9-1CC6-4E88-85E4-37F680C0BE71}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="GrantAccess.exe_1"/>
+    <ROW Component="KomodiaClassificationDLL.dll_1" ComponentId="{340A151D-F1F5-4B6C-96C3-C183243148FC}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="KomodiaClassificationDLL.dll_1"/>
+    <ROW Component="OdbcFb.dll" ComponentId="{3CD04D41-25A3-4102-B716-3818D0B8B24D}" Directory_="SystemFolder" Attributes="0" KeyPath="OdbcFb.dll_2"/>
+    <ROW Component="OdbcFb.dll_1" ComponentId="{3A6A79FB-46C2-4A7E-8473-DDB0611552B2}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="OdbcFb.dll_1"/>
+    <ROW Component="Packet.dll_1" ComponentId="{9412C26E-3949-496C-9688-11E8486030F0}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="Packet.dll_1"/>
+    <ROW Component="ProtocolFilters.dll" ComponentId="{573D9413-21E1-4D7F-877C-26F8325CA776}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="ProtocolFilters.dll"/>
+    <ROW Component="Services" ComponentId="{C785CBE0-08D1-4E9D-AEBB-583E412E2E7C}" Directory_="APPDIR" Attributes="260" KeyPath="Services"/>
+    <ROW Component="StartService.EXE_1" ComponentId="{FB0747A9-57BA-42DC-8D17-443CED36EDB8}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="StartService.EXE_1"/>
+    <ROW Component="System" ComponentId="{4E33E2E1-9136-40A5-B722-0121BE6A8562}" Directory_="APPDIR" Attributes="260" KeyPath="System"/>
+    <ROW Component="TENANT_ENDPOINT" ComponentId="{600168C8-FFE6-4C39-BBBF-F78FB374167C}" Directory_="APPDIR" Attributes="260" KeyPath="TENANT_ENDPOINT"/>
+    <ROW Component="TenantID" ComponentId="{2D6618DD-4883-4FD2-BA3D-8BC5ABB2B5CC}" Directory_="APPDIR" Attributes="260" KeyPath="TenantID"/>
+    <ROW Component="Win732" ComponentId="{BC5F3374-793A-4C7B-B0D0-20FDC889D21C}" Directory_="Win732_Dir" Attributes="0"/>
+    <ROW Component="Win764" ComponentId="{CFE063EB-BAA1-4974-AB7B-AABEF5F63C0F}" Directory_="Win764_Dir" Attributes="0"/>
+    <ROW Component="WinDivert.dll_1" ComponentId="{A53D4F74-8C6D-4DF0-8620-028138F0ADD7}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="WinDivert.dll_1"/>
+    <ROW Component="WinDivert.inf" ComponentId="{E8E56C42-B0CE-4CD8-9E2B-7336B969DC98}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="WinDivert.inf_1"/>
+    <ROW Component="WinDivert32.sys" ComponentId="{9F5AEC95-EC58-4289-BCAC-37B993257EF3}" Directory_="NewFolder_2_Dir" Attributes="0" Condition="(NOT VersionNT64 )" KeyPath="WinDivert32.sys_2"/>
+    <ROW Component="WinDivert64.cat" ComponentId="{8F113EBA-6EA3-48F3-B623-14CE4D6D1340}" Directory_="NewFolder_2_Dir" Attributes="0" Condition="VersionNT64" KeyPath="WinDivert64.cat_1"/>
+    <ROW Component="WinDivert64.sys" ComponentId="{EC13F526-E0B0-4E78-906A-4303A8365DFF}" Directory_="NewFolder_2_Dir" Attributes="256" Condition="VersionNT64" KeyPath="WinDivert64.sys"/>
+    <ROW Component="WinDivert64.sys_1" ComponentId="{A0DE2A8B-8765-4DC0-A617-1886BDB368C7}" Directory_="wcsystck_Dir" Attributes="256" Condition="VersionNT64" KeyPath="WinDivert64.sys_1"/>
+    <ROW Component="WinDivert64.sys_2" ComponentId="{3F1802E3-4826-424B-8372-4DDD6340C1BF}" Directory_="System64Folder" Attributes="256" KeyPath="WinDivert64.sys_2"/>
+    <ROW Component="advnfcw.sys" ComponentId="{CECEC8FC-A6CC-4FA2-9187-605A5B787204}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT &gt;= 1000" KeyPath="advnfcw.sys"/>
+    <ROW Component="advnfcw.sys_1" ComponentId="{2E814B3B-BC81-4D80-A17E-B6F231C689DA}" Directory_="Win8Adv_Dir" Attributes="256" Condition="(VersionNT64 = 600 AND MsiNTProductType &lt;&gt; 1) OR (VersionNT64 = 601 AND MsiNTProductType = 1) OR (VersionNT64 = 601 AND MsiNTProductType &lt;&gt; 1) OR (VersionNT64 = 602 AND MsiNTProductType = 1) OR (VersionNT64 = 602 AND MsiNTProductType &lt;&gt; 1)OR (VersionNT64 = 603 AND MsiNTProductType = 1) OR (VersionNT64 = 603 AND MsiNTProductType &lt;&gt; 1)" KeyPath="advnfcw.sys_1"/>
+    <ROW Component="apfddrv.cat" ComponentId="{53E4291D-1BC4-4673-8725-4E7CBEF545BC}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT &gt;= 1000" KeyPath="apfddrv.cat"/>
+    <ROW Component="apfddrv.cat_1" ComponentId="{DA4EC3A2-57B8-4E7C-BACA-067DFE7DDBBE}" Directory_="Bit_Dir" Attributes="0" Condition="VersionNT64 = 600" KeyPath="apfddrv.cat_1"/>
+    <ROW Component="apfddrv.cat_2" ComponentId="{B62EDAFB-37F3-41BD-BADF-0CE2871F036F}" Directory_="NewFolder_Dir" Attributes="256" Condition="(VersionNT64 = 602) OR (VersionNT64 = 603)" KeyPath="apfddrv.cat_2" Type="0"/>
+    <ROW Component="apfddrv.cat_3" ComponentId="{C31266CA-1C00-40DF-BFCA-DAACDCF62C16}" Directory_="Win7_Dir" Attributes="0" Condition="(VersionNT64 = 601)" KeyPath="apfddrv.cat_3"/>
+    <ROW Component="apfddrv.sys" ComponentId="{22AC6EB3-18C4-4F6C-9016-DD32F40321BA}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT &gt;= 1000" KeyPath="apfddrv.sys"/>
+    <ROW Component="apfddrv.sys_1" ComponentId="{3407F829-64BB-4CC3-AD8F-B927673DEB8A}" Directory_="Drivers_Dir" Attributes="0" Condition="NOT VersionNT64" KeyPath="apfddrv.sys_1"/>
+    <ROW Component="apfddrv.sys_2" ComponentId="{712AA7DD-6C2D-4B47-8BD7-68C9C59E7D7D}" Directory_="Bit_Dir" Attributes="256" Condition="VersionNT64 = 600" KeyPath="apfddrv.sys_2" Type="0"/>
+    <ROW Component="apfddrv.sys_3" ComponentId="{A849403E-2EF0-4AC1-8EEB-D74F9B398D98}" Directory_="NewFolder_Dir" Attributes="256" Condition="(VersionNT64 = 602) OR (VersionNT64 = 603)" KeyPath="apfddrv.sys_3"/>
+    <ROW Component="apfddrv.sys_4" ComponentId="{73778AF5-300B-4043-B775-6BC3E8B4CD39}" Directory_="Win7_Dir" Attributes="256" Condition="(VersionNT64 = 601)" KeyPath="apfddrv.sys_4"/>
+    <ROW Component="autoconfig.js" ComponentId="{D81E9BB9-BCD4-44D0-A07A-83AF27C45653}" Directory_="Temp_Dir" Attributes="0" KeyPath="autoconfig.js" Type="0"/>
+    <ROW Component="cwAgent.exe_1" ComponentId="{9C8B0FA6-77B6-4B5A-9F16-3F40EAC92D62}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="cwAgent.exe_1"/>
+    <ROW Component="cwAgent64.exe" ComponentId="{4484B82F-8B10-4E64-8AD6-6D3AA1EFCDB2}" Directory_="NewFolder_2_Dir" Attributes="256" Condition="VersionNT64" KeyPath="cwAgent64.exe"/>
+    <ROW Component="cwBcp32.exe" ComponentId="{98749D05-7CB6-4C10-BD3D-5CF92AC2915D}" Directory_="NewFolder_2_Dir" Attributes="0" Condition="(NOT VersionNT64 )" KeyPath="cwBcp32.exe"/>
+    <ROW Component="cwBcp64.exe" ComponentId="{F43750AD-9E2E-4411-99DC-7EE77F892032}" Directory_="NewFolder_2_Dir" Attributes="256" Condition="VersionNT64" KeyPath="cwBcp64.exe"/>
+    <ROW Component="cwCPA.cpl_2" ComponentId="{D9CBD3BF-07D5-4388-9DE4-2CC7A1554584}" Directory_="SystemFolder" Attributes="0" KeyPath="cwCPA.cpl" Type="0"/>
+    <ROW Component="cwClient.exe" ComponentId="{A9424199-2482-428D-9F05-CD0FDB4B3FFB}" Directory_="SystemFolder" Attributes="0" KeyPath="cwClient.exe"/>
+    <ROW Component="cwClient.exe_1" ComponentId="{58CFBB8D-EE84-478F-8F30-8BF06BFABCF0}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="cwClient.exe_1"/>
+    <ROW Component="cwClientSAS" ComponentId="{ED56FB9D-734B-4248-A09E-CE07A92692FE}" Directory_="APPDIR" Attributes="260" KeyPath="cwClientSAS"/>
+    <ROW Component="cwClientUtility.exe" ComponentId="{55A31719-85E2-4AC8-97A1-A260447B39AF}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="cwClientUtility.exe"/>
+    <ROW Component="cwDrvFt.Inf" ComponentId="{BA0B8CFC-4AEE-4F33-B59D-D7A036E28305}" Directory_="Drivers_Dir" Attributes="0" Condition="VersionNT &gt;= 603" KeyPath="cwDrvFt.Inf_1"/>
+    <ROW Component="cwDrvFt.sys" ComponentId="{458071C7-0EF6-4F6A-9979-3ECADCEE7369}" Directory_="Drivers_Dir" Attributes="0" Condition="VersionNT &gt;= 603" KeyPath="cwDrvFt.sys_1"/>
+    <ROW Component="cwHelper.exe_1" ComponentId="{6934DC2F-A904-41F5-8C3C-1BE86B490FB9}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="cwHelper.exe_1"/>
+    <ROW Component="cwHelper.log" ComponentId="{5E9323ED-1FDB-442C-A615-66829CAA16EB}" Directory_="Logs_Dir" Attributes="0" KeyPath="cwHelper.log" Type="0"/>
+    <ROW Component="cwIAcc32.dll_1" ComponentId="{E0F3248E-2D22-46FA-B552-9D5390F9E5E8}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="cwIAcc32.dll_1"/>
+    <ROW Component="cwIAcc64.dll" ComponentId="{F8124013-B18D-45F1-A929-6B0803E3D845}" Directory_="wcsystck_Dir" Attributes="256" Condition="VersionNT64" KeyPath="cwIAcc64.dll"/>
+    <ROW Component="cwLocClient.exe" ComponentId="{09C54645-A5F9-4C13-9C62-757C824A9B73}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="cwLocClient.exe"/>
+    <ROW Component="cwMetroClient.exe_1" ComponentId="{944F41F0-C485-421B-B0FE-BABD6E12A482}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="cwMetroClient.exe_1"/>
+    <ROW Component="cwTrack.exe_1" ComponentId="{7EEF5D23-3DCA-4AD8-88FC-52FE0ADCAEA4}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="cwTrack.exe_1"/>
+    <ROW Component="cwUserReport.exe" ComponentId="{2CEC22A0-E79E-4704-B091-B75A885DD2D0}" Directory_="NewFolder_2_Dir" Attributes="0" Condition="VersionNT &gt;= 1000" KeyPath="cwUserReport.exe"/>
+    <ROW Component="cwWorkerProcess.exe" ComponentId="{CFEBBA55-5392-4C19-B360-CEF97E52D563}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="cwWorkerProcess.exe"/>
+    <ROW Component="cwdrvft.cat" ComponentId="{5956D53A-7D67-4461-B074-FC55C1427919}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT64 &gt;= 1000" KeyPath="cwdrvft.cat"/>
+    <ROW Component="cwdrvft.cat_1" ComponentId="{2A8C1DD2-E2AF-44C5-97BB-F2403311707B}" Directory_="Drivers_Dir" Attributes="0" Condition="VersionNT &gt;= 603" KeyPath="cwdrvft.cat_1"/>
+    <ROW Component="ib6xtg10.dll_1" ComponentId="{4C4EDDCC-0D1E-4D65-B162-755D55CFB453}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="ib6xtg10.dll_1"/>
+    <ROW Component="libcrypto3.dll" ComponentId="{DEEE160D-8011-4C46-92D7-E7727D6B1845}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="libcrypto3.dll"/>
+    <ROW Component="libssl3.dll" ComponentId="{983CC6EF-91ED-4D75-8F3E-3CE19BCAAD4E}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="libssl3.dll"/>
+    <ROW Component="mfc110.dll" ComponentId="{A4560058-B9DD-42B7-BDAB-13BFAD72B68B}" Directory_="SystemFolder" Attributes="0" KeyPath="mfc110.dll"/>
+    <ROW Component="mfc110.dll_1" ComponentId="{DFF8954F-F997-4C87-99DC-0AB684CE8E8C}" Directory_="System64Folder" Attributes="256" KeyPath="mfc110.dll_1"/>
+    <ROW Component="mozilla.cfg" ComponentId="{7C6A5EB7-B21A-490A-B29C-A9127CD4B38E}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="mozilla.cfg_2"/>
+    <ROW Component="msvcp110.dll" ComponentId="{6F69889A-C86D-47AC-A7A2-883867A67939}" Directory_="SystemFolder" Attributes="0" KeyPath="msvcp110.dll"/>
+    <ROW Component="msvcp110.dll_1" ComponentId="{755DAB59-EFB1-4182-B993-950238DBC4D1}" Directory_="System64Folder" Attributes="256" KeyPath="msvcp110.dll_1"/>
+    <ROW Component="msvcr110.dll" ComponentId="{3074531F-FCED-4D50-A18A-44D8BB00FE18}" Directory_="SystemFolder" Attributes="0" KeyPath="msvcr110.dll"/>
+    <ROW Component="msvcr110.dll_1" ComponentId="{83DECB3A-9B52-4D52-BDB4-530658A2A7D8}" Directory_="System64Folder" Attributes="256" KeyPath="msvcr110.dll_1"/>
+    <ROW Component="nfapi.dll" ComponentId="{97FA757E-2AC7-4BA7-A619-076A33A0A496}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="nfapi.dll"/>
+    <ROW Component="npf.sys" ComponentId="{D86C834C-F69D-4617-A4A8-657875EEEAE3}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT64" KeyPath="npf.sys"/>
+    <ROW Component="npf.sys_1" ComponentId="{3F8C754E-520C-490F-90E3-AEAEB21700B9}" Directory_="Drivers_Dir" Attributes="0" Condition="NOT VersionNT64" KeyPath="npf.sys_1"/>
+    <ROW Component="npptools.dll" ComponentId="{8799B598-E0D8-46F1-AEB3-D47032C6A879}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="npptools.dll"/>
+    <ROW Component="ntwbfs.cat" ComponentId="{5D0003BD-0E27-4B76-B15E-69DB6AA55DE8}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT64" KeyPath="ntwbfs.cat"/>
+    <ROW Component="ntwbfs.sys" ComponentId="{7EF76891-42CA-4764-8BF7-AA81BFB049B6}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT64" KeyPath="ntwbfs.sys"/>
+    <ROW Component="ntwkbs32.cat" ComponentId="{E5E063A2-36A3-430D-B566-130CD86FE5F8}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT64" KeyPath="ntwkbs32.cat"/>
+    <ROW Component="ntwkbs32.sys" ComponentId="{F72061F1-128F-4CFF-BACC-7A06E7D0B828}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT64" KeyPath="ntwkbs32.sys"/>
+    <ROW Component="ntwkbs64.cat" ComponentId="{D0923A75-5545-498B-B192-B69F73E9C109}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT64" KeyPath="ntwkbs64.cat"/>
+    <ROW Component="ntwkbs64.sys" ComponentId="{8FB2B483-2EB8-4421-85AA-E5CCD530893A}" Directory_="Drivers_1_Dir" Attributes="256" Condition="VersionNT64" KeyPath="ntwkbs64.sys"/>
+    <ROW Component="ntwrcb.sys" ComponentId="{B6C16695-11D6-4591-B2F6-D99147E71C8D}" Directory_="Drivers_Dir" Attributes="0" Condition="NOT VersionNT64" KeyPath="ntwrcb.sys"/>
+    <ROW Component="pthreadVC.dll_1" ComponentId="{5557DCD0-CCF8-48B3-8AB5-70B2AE4D91E6}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="pthreadVC.dll_1"/>
+    <ROW Component="seclevel" ComponentId="{BD899BC4-D728-4C9D-844A-96BD7D324056}" Directory_="APPDIR" Attributes="4" KeyPath="seclevel"/>
+    <ROW Component="wc2b.fdk" ComponentId="{FD80A07C-8F41-4D85-9EC3-E0B19A575758}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="wc2b.fdk_1"/>
+    <ROW Component="wc2bbw.fdk" ComponentId="{1EE76194-DE74-4D0A-A360-53589657D3C6}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="wc2bbw.fdk" Type="0"/>
+    <ROW Component="wcrb.cwk" ComponentId="{674B53D3-EAA9-43F3-86FD-8A165F8111F5}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="wcrb.cwk"/>
+    <ROW Component="wcrbbw.cwk" ComponentId="{8C32C164-1D08-49B6-97B2-332B72E8AE6B}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="wcrbbw.cwk"/>
+    <ROW Component="wsck32.dll_1" ComponentId="{5BC19BFC-C778-46F9-A8C8-1E584C12EB5A}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="wsck32.dll_1"/>
+    <ROW Component="wsck64.dll" ComponentId="{B1253A6F-22DF-4A55-B15E-FF06D682CE73}" Directory_="wcsystck_Dir" Attributes="256" Condition="VersionNT64" KeyPath="wsck64.dll"/>
+    <ROW Component="zlib1.dll_1" ComponentId="{6DC157DC-4819-4452-9724-C01C7871122C}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="zlib1.dll_1"/>
+    <ROW Component="zlibwapi.dll_1" ComponentId="{9D6A34ED-4080-4EFC-908C-2D9B95E0D859}" Directory_="NewFolder_2_Dir" Attributes="0" KeyPath="zlibwapi.dll_1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="AI32BitFiles" Title="32-bit" Description="32-bit Executables and Libraries" Display="5" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ROW Feature="AI64BitFiles" Title="64-bit" Description="64-bit Executables and Libraries" Display="3" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ROW Feature="AIOtherFiles" Title="Common" Description="Shared Resource and Regular Files" Display="9" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="AIOtherFiles"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="apfddrv.cat" Component_="apfddrv.cat" FileName="apfddrv.cat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\64\apfddrv.cat" SelfReg="false"/>
+    <ROW File="apfddrv.sys" Component_="apfddrv.sys" FileName="apfddrv.sys" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\64\apfddrv.sys" SelfReg="false"/>
+    <ROW File="npf.sys" Component_="npf.sys" FileName="npf.sys" Attributes="1" SourcePath="Client Files\64\npf.sys" SelfReg="false"/>
+    <ROW File="ntwbfs.cat" Component_="ntwbfs.cat" FileName="ntwbfs.cat" Attributes="0" SourcePath="Client Files\64\ntwbfs.cat" SelfReg="false"/>
+    <ROW File="ntwbfs.sys" Component_="ntwbfs.sys" FileName="ntwbfs.sys" Attributes="0" SourcePath="Client Files\64\ntwbfs.sys" SelfReg="false"/>
+    <ROW File="ntwkbs32.cat" Component_="ntwkbs32.cat" FileName="ntwkbs32.cat" Attributes="0" SourcePath="Client Files\64\ntwkbs32.cat" SelfReg="false"/>
+    <ROW File="ntwkbs32.sys" Component_="ntwkbs32.sys" FileName="ntwkbs32.sys" Attributes="0" SourcePath="Client Files\64\ntwkbs32.sys" SelfReg="false"/>
+    <ROW File="ntwkbs64.cat" Component_="ntwkbs64.cat" FileName="ntwkbs64.cat" Attributes="0" SourcePath="Client Files\64\ntwkbs64.cat" SelfReg="false"/>
+    <ROW File="ntwkbs64.sys" Component_="ntwkbs64.sys" FileName="ntwkbs64.sys" Attributes="0" SourcePath="Client Files\64\ntwkbs64.sys" SelfReg="false"/>
+    <ROW File="apfddrv.sys_1" Component_="apfddrv.sys_1" FileName="apfddrv.sys" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\32\apfddrv.sys" SelfReg="false"/>
+    <ROW File="npf.sys_1" Component_="npf.sys_1" FileName="npf.sys" Attributes="1" SourcePath="Client Files\32\npf.sys" SelfReg="false"/>
+    <ROW File="ntwrcb.sys" Component_="ntwrcb.sys" FileName="ntwrcb.sys" Attributes="0" SourcePath="Client Files\32\ntwrcb.sys" SelfReg="false"/>
+    <ROW File="apfddrv.sys_2" Component_="apfddrv.sys_2" FileName="apfddrv.sys" Version="65535.65535.65535.65535" Attributes="1" SourcePath="Client Files\64Bit\apfddrv.sys" SelfReg="false"/>
+    <ROW File="apfddrv.cat_1" Component_="apfddrv.cat_1" FileName="apfddrv.cat" Version="65535.65535.65535.65535" Attributes="1" SourcePath="Client Files\64Bit\apfddrv.cat" SelfReg="false"/>
+    <ROW File="autoconfig.js" Component_="autoconfig.js" FileName="AUTOCO~1.JS|autoconfig.js" Attributes="0" SourcePath="Client Files\Win10\autoconfig.js" SelfReg="false"/>
+    <ROW File="mozilla.cfg" Component_="autoconfig.js" FileName="mozilla.cfg" Attributes="0" SourcePath="Client Files\Win10\mozilla.cfg" SelfReg="false"/>
+    <ROW File="cwAgent.exe_1" Component_="cwAgent.exe_1" FileName="cwAgent.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwAgent.exe" SelfReg="false"/>
+    <ROW File="cwClient.exe_1" Component_="cwClient.exe_1" FileName="cwClient.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwClient.exe" SelfReg="false"/>
+    <ROW File="cwHelper.exe_1" Component_="cwHelper.exe_1" FileName="cwHelper.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwHelper.exe" SelfReg="false"/>
+    <ROW File="cwIAcc32.dll_1" Component_="cwIAcc32.dll_1" FileName="cwIAcc32.dll" Attributes="0" SourcePath="Client Files\Common Files\cwIAcc32.dll" SelfReg="false"/>
+    <ROW File="cwMetroClient.exe_1" Component_="cwMetroClient.exe_1" FileName="CWMETR~1.EXE|cwMetroClient.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwMetroClient.exe" SelfReg="false"/>
+    <ROW File="cwTrack.exe_1" Component_="cwTrack.exe_1" FileName="cwTrack.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwTrack.exe" SelfReg="false"/>
+    <ROW File="GrantAccess.exe_1" Component_="GrantAccess.exe_1" FileName="GRANTA~1.EXE|GrantAccess.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\GrantAccess.exe" SelfReg="false"/>
+    <ROW File="ib6xtg10.dll_1" Component_="ib6xtg10.dll_1" FileName="ib6xtg10.dll" Attributes="0" SourcePath="Client Files\Common Files\ib6xtg10.dll" SelfReg="false"/>
+    <ROW File="KomodiaClassificationDLL.dll_1" Component_="KomodiaClassificationDLL.dll_1" FileName="KOMODI~1.DLL|KomodiaClassificationDLL.dll" Attributes="0" SourcePath="Client Files\Common Files\KomodiaClassificationDLL.dll" SelfReg="false"/>
+    <ROW File="OdbcFb.dll_1" Component_="OdbcFb.dll_1" FileName="OdbcFb.dll" Attributes="0" SourcePath="Client Files\Common Files\OdbcFb.dll" SelfReg="false"/>
+    <ROW File="Packet.dll_1" Component_="Packet.dll_1" FileName="Packet.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\Packet.dll" SelfReg="false"/>
+    <ROW File="pthreadVC.dll_1" Component_="pthreadVC.dll_1" FileName="PTHREA~1.DLL|pthreadVC.dll" Attributes="0" SourcePath="Client Files\Common Files\pthreadVC.dll" SelfReg="false"/>
+    <ROW File="StartService.EXE_1" Component_="StartService.EXE_1" FileName="STARTS~1.EXE|StartService.EXE" Attributes="0" SourcePath="Client Files\Common Files\StartService.EXE" SelfReg="false"/>
+    <ROW File="wc2b.fdk_1" Component_="wc2b.fdk" FileName="wc2b.fdk" Attributes="0" SourcePath="Client Files\Common Files\wc2b.fdk" SelfReg="false"/>
+    <ROW File="wsck32.dll_1" Component_="wsck32.dll_1" FileName="wsck32.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\wsck32.dll" SelfReg="false"/>
+    <ROW File="zlib1.dll_1" Component_="zlib1.dll_1" FileName="zlib1.dll" Attributes="0" SourcePath="Client Files\Common Files\zlib1.dll" SelfReg="false"/>
+    <ROW File="zlibwapi.dll_1" Component_="zlibwapi.dll_1" FileName="zlibwapi.dll" Attributes="0" SourcePath="Client Files\Common Files\zlibwapi.dll" SelfReg="false"/>
+    <ROW File="autoconfig.js_2" Component_="cwClient.exe_1" FileName="AUTOCO~1.JS|autoconfig.js" Attributes="0" SourcePath="Client Files\Win10\autoconfig.js" SelfReg="false"/>
+    <ROW File="mozilla.cfg_2" Component_="mozilla.cfg" FileName="mozilla.cfg" Attributes="0" SourcePath="Client Files\Win10\mozilla.cfg" SelfReg="false"/>
+    <ROW File="WinDivert.dll_1" Component_="WinDivert.dll_1" FileName="WINDIV~1.DLL|WinDivert.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Win10\WinDivert.dll" SelfReg="false"/>
+    <ROW File="WinDivert.inf_1" Component_="WinDivert.inf" FileName="WINDIV~1.INF|WinDivert.inf" Attributes="0" SourcePath="Client Files\Win10\WinDivert.inf" SelfReg="false"/>
+    <ROW File="WinDivert32.sys_2" Component_="WinDivert32.sys" FileName="WINDIV~1.SYS|WinDivert32.sys" Attributes="0" SourcePath="Client Files\Win10\WinDivert32.sys" SelfReg="false"/>
+    <ROW File="WinDivert64.cat_1" Component_="WinDivert64.cat" FileName="WINDIV~1.CAT|WinDivert64.cat" Attributes="0" SourcePath="Client Files\Win1064\WinDivert64.cat" SelfReg="false"/>
+    <ROW File="cwHelper.log" Component_="cwHelper.log" FileName="cwHelper.log" Attributes="0" SourcePath="Client Files\Common Files\cwHelper.log" SelfReg="false"/>
+    <ROW File="GrantAccess.log" Component_="cwHelper.log" FileName="GRANTA~1.LOG|GrantAccess.log" Attributes="0" SourcePath="Client Files\Common Files\GrantAccess.log" SelfReg="false"/>
+    <ROW File="cwCPA.cpl" Component_="cwCPA.cpl_2" FileName="cwCPA.cpl" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwCPA.cpl" SelfReg="false"/>
+    <ROW File="cwBcp64.exe" Component_="cwBcp64.exe" FileName="cwBcp64.exe" Attributes="0" SourcePath="Client Files\64\cwBcp64.exe" SelfReg="false"/>
+    <ROW File="cwIAcc64.dll" Component_="cwIAcc64.dll" FileName="cwIAcc64.dll" Attributes="0" SourcePath="Client Files\64\cwIAcc64.dll" SelfReg="false"/>
+    <ROW File="wcrblite.db" Component_="wsck64.dll" FileName="wcrblite.db" Attributes="0" SourcePath="Client Files\64\wcrblite.db" SelfReg="false"/>
+    <ROW File="wsck64.dll" Component_="wsck64.dll" FileName="wsck64.dll" Attributes="0" SourcePath="Client Files\64\wsck64.dll" SelfReg="false"/>
+    <ROW File="cwAgent64.exe" Component_="cwAgent64.exe" FileName="CWAGEN~1.EXE|cwAgent64.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\64\cwAgent64.exe" SelfReg="false"/>
+    <ROW File="WinDivert64.sys" Component_="WinDivert64.sys" FileName="WINDIV~2.SYS|WinDivert64.sys" Attributes="1" SourcePath="Client Files\Win1064\WinDivert64.sys" SelfReg="false"/>
+    <ROW File="WinDivert64.sys_1" Component_="WinDivert64.sys_1" FileName="WINDIV~1.SYS|WinDivert64.sys" Attributes="1" SourcePath="Client Files\Win1064\WinDivert64.sys" SelfReg="false"/>
+    <ROW File="WinDivert64.sys_2" Component_="WinDivert64.sys_2" FileName="WINDIV~1.SYS|WinDivert64.sys" Attributes="1" SourcePath="Client Files\Win1064\WinDivert64.sys" SelfReg="false"/>
+    <ROW File="cwBcp32.exe" Component_="cwBcp32.exe" FileName="cwBcp32.exe" Attributes="0" SourcePath="Client Files\32\cwBcp32.exe" SelfReg="false"/>
+    <ROW File="OdbcFb.dll_2" Component_="OdbcFb.dll" FileName="OdbcFb.dll" Attributes="0" SourcePath="Client Files\Common Files\OdbcFb.dll" SelfReg="false"/>
+    <ROW File="cwClient.exe" Component_="cwClient.exe" FileName="cwClient.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Win10\cwClient.exe" SelfReg="false"/>
+    <ROW File="cwdrvft.cat" Component_="cwdrvft.cat" FileName="cwdrvft.cat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\64\cwdrvft.cat" SelfReg="false"/>
+    <ROW File="cwDrvFt.inf" Component_="cwdrvft.cat" FileName="cwDrvFt.inf" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\64\cwDrvFt.inf" SelfReg="false"/>
+    <ROW File="cwDrvFt.sys" Component_="cwdrvft.cat" FileName="cwDrvFt.sys" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\64\cwDrvFt.sys" SelfReg="false"/>
+    <ROW File="cwDrvFt.sys_1" Component_="cwDrvFt.sys" FileName="cwDrvFt.sys" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\32\cwDrvFt.sys" SelfReg="false"/>
+    <ROW File="cwDrvFt.Inf_1" Component_="cwDrvFt.Inf" FileName="cwDrvFt.Inf" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\32\cwDrvFt.Inf" SelfReg="false"/>
+    <ROW File="cwdrvft.cat_1" Component_="cwdrvft.cat_1" FileName="cwdrvft.cat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\32\cwdrvft.cat" SelfReg="false"/>
+    <ROW File="wc2bbw.fdk" Component_="wc2bbw.fdk" FileName="wc2bbw.fdk" Attributes="0" SourcePath="Client Files\Common Files\wc2bbw.fdk" SelfReg="false"/>
+    <ROW File="wcrbbw.cwk" Component_="wcrbbw.cwk" FileName="wcrbbw.cwk" Attributes="0" SourcePath="Client Files\Common Files\wcrbbw.cwk" SelfReg="false"/>
+    <ROW File="cwUserReport.exe" Component_="cwUserReport.exe" FileName="CWUSER~1.EXE|cwUserReport.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwUserReport.exe" SelfReg="false"/>
+    <ROW File="cwClientUtility.exe" Component_="cwClientUtility.exe" FileName="CWCLIE~1.EXE|cwClientUtility.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwClientUtility.exe" SelfReg="false"/>
+    <ROW File="apfddrv.cat_2" Component_="apfddrv.cat_2" FileName="apfddrv.cat" Attributes="0" SourcePath="Client Files\Apfddrv\apfddrv.cat" SelfReg="false"/>
+    <ROW File="apfddrv.sys_3" Component_="apfddrv.sys_3" FileName="apfddrv.sys" Attributes="0" SourcePath="Client Files\Apfddrv\apfddrv.sys" SelfReg="false"/>
+    <ROW File="apfddrv.cat_3" Component_="apfddrv.cat_3" FileName="apfddrv.cat" Attributes="0" SourcePath="Client Files\Win7\apfddrv.cat" SelfReg="false"/>
+    <ROW File="apfddrv.sys_4" Component_="apfddrv.sys_4" FileName="apfddrv.sys" Attributes="0" SourcePath="Client Files\Win7\apfddrv.sys" SelfReg="false"/>
+    <ROW File="libcrypto3.dll" Component_="libcrypto3.dll" FileName="LIBCRY~1.DLL|libcrypto-3.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\libcrypto-3.dll" SelfReg="false"/>
+    <ROW File="libssl3.dll" Component_="libssl3.dll" FileName="libssl-3.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\libssl-3.dll" SelfReg="false"/>
+    <ROW File="nfapi.dll" Component_="nfapi.dll" FileName="nfapi.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\nfapi.dll" SelfReg="false"/>
+    <ROW File="ProtocolFilters.dll" Component_="ProtocolFilters.dll" FileName="PROTOC~1.DLL|ProtocolFilters.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\ProtocolFilters.dll" SelfReg="false"/>
+    <ROW File="advnfcw.sys" Component_="advnfcw.sys" FileName="advnfcw.sys" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\64\advnfcw.sys" SelfReg="false"/>
+    <ROW File="advnfcw.sys_1" Component_="advnfcw.sys_1" FileName="advnfcw.sys" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Win8Adv\advnfcw.sys" SelfReg="false"/>
+    <ROW File="wcrb.cwk" Component_="wcrb.cwk" FileName="wcrb.cwk" Attributes="0" SourcePath="Client Files\Common Files\wcrb.cwk" SelfReg="false"/>
+    <ROW File="COMCatLookup.dll" Component_="COMCatLookup.dll" FileName="COMCAT~1.DLL|COMCatLookup.dll" Attributes="0" SourcePath="Client Files\Common Files\COMCatLookup.dll" SelfReg="false"/>
+    <ROW File="npptools.dll" Component_="npptools.dll" FileName="npptools.dll" Attributes="0" SourcePath="Client Files\Common Files\npptools.dll" SelfReg="false"/>
+    <ROW File="cwWorkerProcess.exe" Component_="cwWorkerProcess.exe" FileName="CWWORK~1.EXE|cwWorkerProcess.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwWorkerProcess.exe" SelfReg="false"/>
+    <ROW File="cwLocClient.exe" Component_="cwLocClient.exe" FileName="CWLOCC~1.EXE|cwLocClient.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="Client Files\Common Files\cwLocClient.exe" SelfReg="false"/>
+    <ROW File="mfc110.dll" Component_="mfc110.dll" FileName="mfc110.dll" Attributes="0" SourcePath="Client Files\msv\32Bit\mfc110.dll" SelfReg="false"/>
+    <ROW File="msvcp110.dll" Component_="msvcp110.dll" FileName="msvcp110.dll" Attributes="0" SourcePath="Client Files\msv\32Bit\msvcp110.dll" SelfReg="false"/>
+    <ROW File="msvcr110.dll" Component_="msvcr110.dll" FileName="msvcr110.dll" Attributes="0" SourcePath="Client Files\msv\32Bit\msvcr110.dll" SelfReg="false"/>
+    <ROW File="mfc110.dll_1" Component_="mfc110.dll_1" FileName="mfc110.dll" Attributes="0" SourcePath="Client Files\msv\64Bit\mfc110.dll" SelfReg="false"/>
+    <ROW File="msvcp110.dll_1" Component_="msvcp110.dll_1" FileName="msvcp110.dll" Attributes="0" SourcePath="Client Files\msv\64Bit\msvcp110.dll" SelfReg="false"/>
+    <ROW File="msvcr110.dll_1" Component_="msvcr110.dll_1" FileName="msvcr110.dll" Attributes="0" SourcePath="Client Files\msv\64Bit\msvcr110.dll" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.custcomp.AiActionTextAliasComponent">
+    <ROW AliasRowId="RemoveExistingProducts" AliasRowOperation="2" Description="Updating applications"/>
+    <ROW AliasRowId="RollbackCleanup" AliasRowOperation="2" Description="Updating CurrentWare Client service..."/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.custcomp.AiErrorAliasComponent">
+    <ROW AliasRowId="1703" AliasRowOperation="2" Message="Please restart your system to apply CurrentWare Client configuration changes. Click &quot;Yes&quot; to restart now or &quot;No&quot; if you plan to manually restart later."/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.AiRemoveFileComponent">
+    <ROW RemoveFile="GrantAccess.exe" Options="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" GeneralOptions="qh" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="249"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="251"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="cwClientSetup" BuildOrder="1" BuildType="0" Languages="en" InstallationType="2" CabsLocation="1" CompressCabs="false" UseLzma="true" LzmaMethod="2" LzmaCompressionLevel="2" PackageType="1" FilesInsideExe="true" ExeIconPath="Scripts\insticon.ico" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" UseLargeSchema="true" ExeName="cwClientSetup" MsiPackageType="AI_ALL" UACExecutionLevel="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="CurrentWare" DescriptionUrl="http://www.currentware.com" SignOptions="0" SignTool="0" UseSha256="1" Subject="OID.1.3.6.1.4.1.311.60.2.1.3=CA, OID.1.3.6.1.4.1.311.60.2.1.2=Ontario, OID.2.5.4.15=Private Organization, CN=Currentware Inc., SERIALNUMBER=2686055, O=Currentware Inc., L=Oakville, S=Ontario, C=CA"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FirewallExceptionComponent">
+    <ROW FirewallException="CurrentWareAgent" Direction="1" Action="1" DisplayName="CurrentWare Agent" Enabled="1" Scope="*" Condition="((?cwAgent.exe_1=2) AND ($cwAgent.exe_1=3))" Profiles="7" AppPath="[#cwAgent.exe_1]" Port="*" Protocol="ANY"/>
+    <ROW FirewallException="CurrentWareAgent64" Direction="1" Action="1" DisplayName="CurrentWare Agent64" Enabled="1" Scope="*" Condition="((?cwAgent64.exe=2) AND ($cwAgent64.exe=3))" Profiles="0" AppPath="[#cwAgent64.exe]" Port="*" Protocol="ANY"/>
+    <ROW FirewallException="CurrentWareClient" Direction="1" Action="1" DisplayName="CurrentWare Client" Enabled="1" Scope="*" Condition="((?cwClient.exe_1=2) AND ($cwClient.exe_1=3))" Profiles="7" AppPath="[#cwClient.exe_1]" Port="*" Protocol="ANY"/>
+    <ROW FirewallException="CurrentWareMetroClient" Direction="1" Action="1" DisplayName="CurrentWare MetroClient" Enabled="1" Scope="*" Condition="((?cwMetroClient.exe_1=2) AND ($cwMetroClient.exe_1=3))" Profiles="0" AppPath="[#cwMetroClient.exe_1]" Port="*" Protocol="ANY"/>
+    <ROW FirewallException="CurrentWareTrack" Direction="1" Action="1" DisplayName="CurrentWare Track" Enabled="1" Scope="*" Condition="((?cwTrack.exe_1=2) AND ($cwTrack.exe_1=3))" Profiles="0" AppPath="[#cwTrack.exe_1]" Port="*" Protocol="ANY"/>
+    <ROW FirewallException="cwBWTRK" Direction="1" Action="1" DisplayName="cwClientUtility" Enabled="1" Scope="*" Condition="((?cwClientUtility.exe = 2) AND ($cwClientUtility.exe =2))" Profiles="7" AppPath="[#cwClientUtility.exe]" Port="*" Protocol="ANY"/>
+    <ROW FirewallException="cwBWTRK_1" Direction="2" Action="1" DisplayName="cwClientUtility" Enabled="1" Scope="*" Condition="((?cwClientUtility.exe = 2) AND ($cwClientUtility.exe =2))" Profiles="7" AppPath="[#cwClientUtility.exe]" Port="*" Protocol="ANY"/>
+    <ROW FirewallException="cwClientPorts" Direction="1" Action="1" DisplayName="cwClientPorts" Enabled="1" Scope="*" Condition="1" Profiles="7" Port="8989-8999" Protocol="TCP"/>
+    <ROW FirewallException="cwClientPorts_1" Direction="2" Action="1" DisplayName="cwClientPorts" Enabled="1" Scope="*" Condition="1" Profiles="7" Port="8989-8999" Protocol="TCP"/>
+    <ROW FirewallException="cwWorkerProcess" Direction="1" Action="1" DisplayName="cwWorkerProcess" Enabled="1" Scope="*" Condition="((?cwWorkerProcess.exe=2) AND ($cwWorkerProcess.exe=3))" Profiles="0" AppPath="[#cwWorkerProcess.exe]" Port="8988" Protocol="TCP"/>
+    <ROW FirewallException="cwWorkerProcess_1" Direction="2" Action="1" DisplayName="cwWorkerProcess" Enabled="1" Scope="*" Condition="((?cwWorkerProcess.exe=2) AND ($cwWorkerProcess.exe=3))" Profiles="0" AppPath="[#cwWorkerProcess.exe]" Port="8988" Protocol="UDP"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FirewallOptionComponent">
+    <ROW FirewallOption="opt_0" Name="AllowExceptions" Value="1" Condition="1" Flags="0" Profiles="0"/>
+    <ROW FirewallOption="opt_1" Name="AllowExceptions" Value="1" Condition="1" Flags="1" Profiles="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="Themes.aip" Path="&lt;AI_FRAGS&gt;Themes.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
+    <ROW Action="AI_AiRemoveFilesCommit" Description="Executing file removal operations" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesCommit" Template="Executing file removal: [1]" TemplateLocId="ActionText.Template.AI_AiRemoveFilesCommit"/>
+    <ROW Action="AI_AiRemoveFilesCommit_Impersonate" Description="Executing file removal operations" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesCommit" Template="Executing file removal: [1]" TemplateLocId="ActionText.Template.AI_AiRemoveFilesCommit"/>
+    <ROW Action="AI_AiRemoveFilesDeferred_Permanent" Description="Preparing files for removal" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesDeferred_Permanent" Template="Preparing file: [1]" TemplateLocId="ActionText.Template.AI_AiRemoveFilesDeferred_Permanent"/>
+    <ROW Action="AI_AiRemoveFilesDeferred_Permanent_Impersonate" Description="Preparing files for removal" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesDeferred_Permanent" Template="Preparing file: [1]" TemplateLocId="ActionText.Template.AI_AiRemoveFilesDeferred_Permanent"/>
+    <ROW Action="AI_AiRemoveFilesDeferred_Undoable" Description="Preparing files for removal" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesDeferred_Undoable" Template="Preparing file: [1]" TemplateLocId="ActionText.Template.AI_AiRemoveFilesDeferred_Undoable"/>
+    <ROW Action="AI_AiRemoveFilesDeferred_Undoable_Impersonate" Description="Preparing files for removal" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesDeferred_Undoable" Template="Preparing file: [1]" TemplateLocId="ActionText.Template.AI_AiRemoveFilesDeferred_Undoable"/>
+    <ROW Action="AI_AiRemoveFilesImmediate" Description="Preparing files for removal" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesImmediate" Template="Preparing file: [1]" TemplateLocId="ActionText.Template.AI_AiRemoveFilesImmediate"/>
+    <ROW Action="AI_AiRemoveFilesRebootDeferred" Description="ActionText.Description.AI_AiRemoveFilesRebootDeferred" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesRebootDeferred"/>
+    <ROW Action="AI_AiRemoveFilesRebootImmediate" Description="ActionText.Description.AI_AiRemoveFilesRebootImmediate" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesRebootImmediate"/>
+    <ROW Action="AI_AiRemoveFilesRebootRollback" Description="ActionText.Description.AI_AiRemoveFilesRebootRollback" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesRebootRollback"/>
+    <ROW Action="AI_AiRemoveFilesRollback" Description="Restoring removed files" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesRollback" Template="Restoring file: [1]" TemplateLocId="ActionText.Template.AI_AiRemoveFilesRollback"/>
+    <ROW Action="AI_AiRemoveFilesRollback_Impersonate" Description="Restoring removed files" DescriptionLocId="ActionText.Description.AI_AiRemoveFilesRollback" Template="Restoring file: [1]" TemplateLocId="ActionText.Template.AI_AiRemoveFilesRollback"/>
+    <ROW Action="AI_DeleteLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_DeleteRLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractFiles" Description="Extracting files from archive" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractLzma" Description="Extracting files from archive" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+    <ROW Action="AI_FwConfig" Description="Executing Windows Firewall configurations" DescriptionLocId="ActionText.Description.AI_FwConfig" Template="Configuring Windows Firewall rule: &quot;[1]&quot;" TemplateLocId="ActionText.Template.AI_FwConfig"/>
+    <ROW Action="AI_FwInstall" Description="Generating actions to configure Windows Firewall" DescriptionLocId="ActionText.Description.AI_FwInstall"/>
+    <ROW Action="AI_FwRemove" Description="Executing Windows Firewall configurations" DescriptionLocId="ActionText.Description.AI_FwRemove" Template="Configuring Windows Firewall rule:  &quot;[1]&quot;" TemplateLocId="ActionText.Template.AI_FwRemove"/>
+    <ROW Action="AI_FwRollback" Description="Rolling back Windows Firewall configurations." DescriptionLocId="ActionText.Description.AI_FwRollback" Template="Rolling back Windows Firewall configurations." TemplateLocId="ActionText.Template.AI_FwRollback"/>
+    <ROW Action="AI_FwUninstall" Description="Generating actions to configure Windows Firewall" DescriptionLocId="ActionText.Description.AI_FwUninstall"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
+    <ROW Property="OLDAPCLIENTEXISTS" Signature_="FileSearchSign"/>
+    <ROW Property="CWCLIENT_EXISTS" Signature_="FileSearchSign_1"/>
+    <ROW Property="OLDBCCLIENTEXISTS" Signature_="FileSearchSign_2"/>
+    <ROW Property="OLDBRCLIENTEXISTS" Signature_="FileSearchSign_3"/>
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_LM" Builds="DefaultBuild"/>
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_CU" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="NetFirewall.dll" SourcePath="&lt;AI_CUSTACTS&gt;NetFirewall.dll"/>
+    <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
+    <ROW Name="ResourceCleaner.dll" SourcePath="&lt;AI_CUSTACTS&gt;ResourceCleaner.dll"/>
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="banner1.jpg" SourcePath="Scripts\banner1.jpg"/>
+    <ROW Name="cwInstallAssist.dll" SourcePath="Scripts\cwInstallAssist.dll"/>
+    <ROW Name="cwInstallAssist64.dll" SourcePath="Scripts\cwInstallAssist64.dll"/>
+    <ROW Name="dialog1.jpg" SourcePath="Scripts\dialog1.jpg"/>
+    <ROW Name="insticon.ico" SourcePath="Scripts\insticon.ico"/>
+    <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
+    <ATTRIBUTE name="DeletedRows" value="insticon"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiConditionComponent">
+    <ROW Feature_="AI64BitFiles" Level="0" Condition="NOT VersionNT64"/>
+    <ROW Feature_="AI32BitFiles" Level="0" Condition="VersionNT64"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="AdminBrowseDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="CurrentWare" Order="300" MsiKey="AdminBrowseDlg#Logo"/>
+    <ROW Dialog_="AdminInstallPointDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="CurrentWare" Order="500" MsiKey="AdminInstallPointDlg#Logo"/>
+    <ROW Dialog_="AdminInstallPointDlg" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="700" TextLocId="-" MsiKey="AdminInstallPointDlg#Next" Options="1"/>
+    <ROW Dialog_="AdminInstallPointDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="800" TextLocId="-" MsiKey="AdminInstallPointDlg#Cancel" Options="1"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" TextLocId="-" MsiKey="AdminWelcomeDlg#Next" Options="1"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="AdminWelcomeDlg#Cancel" Options="1"/>
+    <ROW Dialog_="BrowseDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="CurrentWare" Order="300" MsiKey="BrowseDlg#Logo"/>
+    <ROW Dialog_="CancelDlg" Control="Text" Type="Text" X="48" Y="15" Width="194" Height="30" Attributes="3" Text="Are you sure you want to cancel CurrentWare Client [Setup] installation?" Order="400" TextLocId="Control.Text.CancelDlg#Text" MsiKey="CancelDlg#Text"/>
+    <ROW Dialog_="ClientValidation" Control="TemplateSeqDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1"/>
+    <ROW Dialog_="ClientValidation" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="OK" Order="100" TextLocId="-" Options="1"/>
+    <ROW Dialog_="ClientValidation" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" Options="1"/>
+    <ROW Dialog_="ClientValidation" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Back]" Order="300" TextLocId="-" Options="1"/>
+    <ROW Dialog_="ClientValidation" Control="BottomLine" Type="Line" X="0" Y="234" Width="372" Height="0" Attributes="1" Order="400"/>
+    <ROW Dialog_="ClientValidation" Control="Text_1" Type="Text" X="17" Y="65" Width="332" Height="129" Attributes="65539" Property="TEXT_1_PROP" Text="CurrentWare Client is already installed in this machine.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Run cwAgent.exe to make changes to the existing settings. You can find the cwAgent.exe file in C:\Windows\System32\wcsystck (32-bit) or C:\Windows\sysWOW64 \wcsystck(64-bit)." TextStyle="DlgFontBold8" Order="500"/>
+    <ROW Dialog_="ClientValidation" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="600"/>
+    <ROW Dialog_="ClientValidation" Control="Text_2" Type="Text" X="82" Y="18" Width="227" Height="16" Attributes="65539" Property="TEXT_2_PROP_4" Text="CurrentWare Client Setup" TextStyle="VerdanaBold13" Order="700"/>
+    <ROW Dialog_="ClientValidation" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_6_2_1" Text="Version: 11.0" Order="800"/>
+    <ROW Dialog_="CustomizeDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="CurrentWare" Order="600" MsiKey="CustomizeDlg#Logo"/>
+    <ROW Dialog_="CustomizeDlg" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="800" TextLocId="-" MsiKey="CustomizeDlg#Next" Options="1"/>
+    <ROW Dialog_="CustomizeDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="900" TextLocId="-" MsiKey="CustomizeDlg#Cancel" Options="1"/>
+    <ROW Dialog_="DiskCostDlg" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="CurrentWare" Order="400" MsiKey="DiskCostDlg#Logo"/>
+    <ROW Dialog_="ExitDialog" Control="LaunchProdCheckBox" Type="CheckBox" X="135" Y="170" Width="10" Height="10" Attributes="3" Property="RUNAPPLICATION" Order="100" MsiKey="ExitDialog#LaunchProdCheckBox" Options="1"/>
+    <ROW Dialog_="ExitDialog" Control="ViewReadmeCheckBox" Type="CheckBox" X="135" Y="140" Width="10" Height="10" Attributes="3" Property="VIEWREADME" Order="200" MsiKey="ExitDialog#ViewReadmeCheckBox" Options="1"/>
+    <ROW Dialog_="ExitDialog" Control="Finish" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Finish]" Order="300" TextLocId="-" MsiKey="ExitDialog#Finish" Options="1"/>
+    <ROW Dialog_="ExitDialog" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Cancel]" Order="400" TextLocId="-" MsiKey="ExitDialog#Cancel" Options="1"/>
+    <ROW Dialog_="ExitDialog" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1048577" Text="[DialogBitmap]" Order="500" MsiKey="ExitDialog#Bitmap"/>
+    <ROW Dialog_="ExitDialog" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Back]" Order="600" TextLocId="-" MsiKey="ExitDialog#Back" Options="1"/>
+    <ROW Dialog_="ExitDialog" Control="BottomLine" Type="Line" X="0" Y="234" Width="372" Height="0" Attributes="1" Order="700" MsiKey="ExitDialog#BottomLine"/>
+    <ROW Dialog_="ExitDialog" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_5" Text="Version: 11.0" Order="800"/>
+    <ROW Dialog_="ExitDialog" Control="Title" Type="Text" X="125" Y="13" Width="242" Height="55" Attributes="196611" Text="Completing the CurrentWare Client Setup Wizard" TextStyle="VerdanaBold13" Order="900" TextLocId="Control.Text.ExitDialog#Title"/>
+    <ROW Dialog_="ExitDialog" Control="Text_2" Type="Text" X="125" Y="75" Width="239" Height="24" Attributes="65539" Property="TEXT_2_PROP_3" Text="Setup has finished installing CurrentWare Client on your computer.                                                                                     " Order="1000"/>
+    <ROW Dialog_="ExitDialog" Control="Text_3" Type="Text" X="125" Y="183" Width="198" Height="11" Attributes="65539" Property="TEXT_3_PROP_3" Text="Click Finish to exit Setup." Order="1100"/>
+    <ROW Dialog_="ExitDialog" Control="Text_1" Type="Text" X="125" Y="112" Width="195" Height="37" Attributes="65539" Property="TEXT_1_PROP_3" Text="Note: Please add the CurrentWare files to your anti-virus exclusion list (recommended).  " TextStyle="DlgFontBold8" Order="1200"/>
+    <ROW Dialog_="ExitDialog" Control="Hyperlink" Type="Hyperlink" X="135" Y="140" Width="220" Height="20" Attributes="65539" Property="AiReadmeLink" Text="&lt;a href=&quot;[AiReadmeLink]&quot;&gt;View readme&lt;/a&gt;" Order="1300" TextLocId="Control.Text.ExitDialog#ViewReadmeHyperlink" MsiKey="ExitDialog#Hyperlink"/>
+    <ROW Dialog_="ExitDialog" Control="Text_4" Type="Text" X="125" Y="144" Width="234" Height="26" Attributes="65539" Property="TEXT_4_PROP_3" Text="A system reboot is recommended to apply the CurrentWare Client configuration changes. " TextStyle="Alert" Order="1400"/>
+    <ROW Dialog_="ExitDialog" Control="Hyperlink_1" Type="Hyperlink" X="323" Y="122" Width="44" Height="11" Attributes="65539" Property="HYPERLINK_1_PROP" Text="&lt;a href=&quot;http://www.currentware.com/faqs/av-exclusion-list/&quot;&gt;Learn more&lt;/a&gt;" Order="1500"/>
+    <ROW Dialog_="FatalError" Control="Finish" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Finish]" Order="100" TextLocId="-" MsiKey="FatalError#Finish" Options="1"/>
+    <ROW Dialog_="FatalError" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="FatalError#Cancel" Options="1"/>
+    <ROW Dialog_="FilesInUse" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="CurrentWare" Order="600" MsiKey="FilesInUse#Logo"/>
+    <ROW Dialog_="FolderDlg" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Attributes="1048577" Text="[DialogBitmap]" Order="100"/>
+    <ROW Dialog_="FolderDlg" Control="Bitmap_1" Type="Bitmap" X="5" Y="0" Width="370" Height="234" Attributes="1048577" Text="[DialogBitmap]" Order="200"/>
+    <ROW Dialog_="FolderDlg" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="300" TextLocId="-" MsiKey="FolderDlg#Next" Options="1"/>
+    <ROW Dialog_="FolderDlg" Control="BottomLine" Type="Line" X="5" Y="234" Width="368" Height="0" Attributes="1" Order="400" MsiKey="FolderDlg#BottomLine"/>
+    <ROW Dialog_="FolderDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="500" TextLocId="-" MsiKey="FolderDlg#Cancel" Options="1"/>
+    <ROW Dialog_="FolderDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="600" TextLocId="-" MsiKey="FolderDlg#Back" Options="1"/>
+    <ROW Dialog_="FolderDlg" Control="Text_1" Type="Text" X="129" Y="117" Width="107" Height="24" Attributes="65539" Property="TEXT_1_PROP_1" Text="Enter the IP address or computer name." Order="700"/>
+    <ROW Dialog_="FolderDlg" Control="Edit_1" Type="Edit" X="236" Y="117" Width="123" Height="18" Attributes="3" Property="CW_SERVER_IP" Text="{260}" Order="800"/>
+    <ROW Dialog_="FolderDlg" Control="Edit_2" Type="Edit" X="256" Y="165" Width="104" Height="18" Attributes="2097152" Property="CW_CLIENT_PWD" Text="{260}" Order="900"/>
+    <ROW Dialog_="FolderDlg" Control="Edit_3" Type="Edit" X="256" Y="166" Width="104" Height="20" Attributes="2097154" Property="CW_CLIENT_NEW_PWD" Text="{21}" Order="1000"/>
+    <ROW Dialog_="FolderDlg" Control="Text_4" Type="Text" X="129" Y="197" Width="125" Height="14" Attributes="65538" Property="TEXT_4_PROP" Text="Please confirm the password." Order="1100"/>
+    <ROW Dialog_="FolderDlg" Control="Edit_4" Type="Edit" X="256" Y="192" Width="104" Height="18" Attributes="2097154" Property="CW_CLIENT_CONFIRM_PWD" Text="{30}" Order="1200"/>
+    <ROW Dialog_="FolderDlg" Control="Text_6" Type="Text" X="128" Y="41" Width="242" Height="36" Attributes="65539" Property="TEXT_6_PROP" Text="CurrentWare Client configuration" TextStyle="VerdanaBold13" Order="1300"/>
+    <ROW Dialog_="FolderDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_1" Text="Version: 11.0" Order="1400"/>
+    <ROW Dialog_="FolderDlg" Control="Text_2" Type="Text" X="129" Y="106" Width="98" Height="11" Attributes="65539" Property="TEXT_2_PROP_1" Text="CurrentWare Server:" TextStyle="DlgFontBold8" Order="1500"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Next]" Order="800" TextLocId="-" MsiKey="MaintenanceTypeDlg#Next" Options="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="900" TextLocId="-" MsiKey="MaintenanceTypeDlg#Cancel" Options="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="20" Attributes="196611" Text="Select the operation you wish to perform." Order="1200" TextLocId="Control.Text.MaintenanceTypeDlg#Description" MsiKey="MaintenanceTypeDlg#Description"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control="ChangeText" Type="Text" X="105" Y="78" Width="230" Height="20" Attributes="3" Text="Allows users to change the way features are installed." Order="1300" TextLocId="Control.Text.MaintenanceTypeDlg#ChangeText" MsiKey="MaintenanceTypeDlg#ChangeText"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="1400" MsiKey="MaintenanceTypeDlg#BannerLine"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control="Title" Type="Text" X="15" Y="6" Width="240" Height="15" Attributes="196611" Text="Modify, Repair or Remove installation" TextStyle="[DlgTitleFont]" Order="1500" TextLocId="Control.Text.MaintenanceTypeDlg#Title" MsiKey="MaintenanceTypeDlg#Title"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control="RepairText" Type="Text" X="105" Y="127" Width="230" Height="30" Attributes="3" Text="Repairs errors in the most recent installation state - fixes missing or corrupt files, shortcuts and registry entries." Order="1600" TextLocId="Control.Text.MaintenanceTypeDlg#RepairText" MsiKey="MaintenanceTypeDlg#RepairText"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control="RemoveText" Type="Text" X="105" Y="176" Width="230" Height="20" Attributes="3" Text="Removes CurrentWare Client setup from your computer." Order="1700" TextLocId="Control.Text.MaintenanceTypeDlg#RemoveText" MsiKey="MaintenanceTypeDlg#RemoveText"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_6" Text="Version: 11.0" Order="1800"/>
+    <ROW Dialog_="MsiRMFilesInUse" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="MsiRMFilesInUse#Cancel"/>
+    <ROW Dialog_="MsiRMFilesInUse" Control="Logo" Type="Text" X="4" Y="228" Width="70" Height="12" Attributes="1" Text="CurrentWare" Order="1100" MsiKey="MsiRMFilesInUse#Logo"/>
+    <ROW Dialog_="OutOfDiskDlg" Control="VolumeList" Type="VolumeCostList" X="20" Y="100" Width="330" Height="120" Attributes="393223" Text="{120}{70}{70}{70}{70}" Order="400" TextLocId="Control.Text.OutOfDiskDlg#VolumeList" MsiKey="OutOfDiskDlg#VolumeList"/>
+    <ROW Dialog_="OutOfDiskDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Out of Disk Space" TextStyle="[DlgTitleFont]" Order="500" TextLocId="Control.Text.OutOfDiskDlg#Title" MsiKey="OutOfDiskDlg#Title"/>
+    <ROW Dialog_="OutOfDiskDlg" Control="Text" Type="Text" X="20" Y="53" Width="330" Height="40" Attributes="3" Text="The highlighted volumes do not have enough disk space available for the currently selected features.  You can either remove some files from the highlighted volumes, or choose to install less features onto local drive(s), or select different destination drive(s)." Order="600" TextLocId="Control.Text.OutOfDiskDlg#Text" MsiKey="OutOfDiskDlg#Text"/>
+    <ROW Dialog_="OutOfDiskDlg" Control="Description" Type="Text" X="20" Y="20" Width="280" Height="20" Attributes="196611" Text="Disk space required for the installation exceeds available disk space." Order="700" TextLocId="Control.Text.OutOfDiskDlg#Description" MsiKey="OutOfDiskDlg#Description"/>
+    <ROW Dialog_="OutOfDiskDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="800" MsiKey="OutOfDiskDlg#BannerLine"/>
+    <ROW Dialog_="OutOfDiskDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_6_2" Text="Version: 11.0" Order="900"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="Text2" Type="Text" X="20" Y="94" Width="330" Height="40" Attributes="3" Text="Alternatively, you may choose to disable the installer&apos;s rollback functionality.  This allows the installer to restore your computer&apos;s original state should the installation be interrupted in any way.  Click &quot;Yes&quot; if you wish to take the risk to disable rollback." Order="500" TextLocId="Control.Text.OutOfRbDiskDlg#Text2" MsiKey="OutOfRbDiskDlg#Text2"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="Text" Type="Text" X="20" Y="53" Width="330" Height="40" Attributes="3" Text="The highlighted volumes do not have enough disk space available for the currently selected features.  You can either remove some files from the highlighted volumes, or choose to install less features onto local drive(s), or select different destination drive(s)." Order="600" TextLocId="Control.Text.OutOfRbDiskDlg#Text" MsiKey="OutOfRbDiskDlg#Text"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="Description" Type="Text" X="20" Y="20" Width="280" Height="20" Attributes="196611" Text="Disk space required for the installation exceeds available disk space." Order="700" TextLocId="Control.Text.OutOfRbDiskDlg#Description" MsiKey="OutOfRbDiskDlg#Description"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="800" MsiKey="OutOfRbDiskDlg#BannerLine"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="VolumeList" Type="VolumeCostList" X="20" Y="140" Width="330" Height="80" Attributes="4587527" Text="{120}{70}{70}{70}{70}" Order="900" TextLocId="Control.Text.OutOfRbDiskDlg#VolumeList" MsiKey="OutOfRbDiskDlg#VolumeList"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Out of Disk Space" TextStyle="[DlgTitleFont]" Order="1000" TextLocId="Control.Text.OutOfRbDiskDlg#Title" MsiKey="OutOfRbDiskDlg#Title"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_6_2_1_1" Text="Version: 10.0" Order="1100"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" TextLocId="-" MsiKey="PatchWelcomeDlg#Next" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="PatchWelcomeDlg#Cancel" Options="1"/>
+    <ROW Dialog_="PrepareDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="100" TextLocId="-" MsiKey="PrepareDlg#Cancel" Options="1"/>
+    <ROW Dialog_="PrepareDlg" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Next]" Order="300" TextLocId="-" MsiKey="PrepareDlg#Next" Options="1"/>
+    <ROW Dialog_="PrepareDlg" Control="BottomLine" Type="Line" X="0" Y="234" Width="372" Height="0" Attributes="1" Order="400" MsiKey="PrepareDlg#BottomLine"/>
+    <ROW Dialog_="PrepareDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1048577" Text="[ButtonText_Back]" Order="500" TextLocId="-" MsiKey="PrepareDlg#Back" Options="1"/>
+    <ROW Dialog_="PrepareDlg" Control="Title" Type="Text" X="125" Y="13" Width="242" Height="55" Attributes="196611" Text="Welcome to the CurrentWare Client Installation Wizard" TextStyle="VerdanaBold13" Order="600" TextLocId="Control.Text.PrepareDlg#Title"/>
+    <ROW Dialog_="PrepareDlg" Control="Description" Type="Text" X="125" Y="86" Width="242" Height="20" Attributes="196611" Text="Please wait while the CurrentWare Client Setup prepares to guide you through the installation." Order="700" TextLocId="Control.Text.PrepareDlg#Description"/>
+    <ROW Dialog_="PrepareDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1" Text="Version: 11.0" Order="800"/>
+    <ROW Dialog_="ProgressDlg" Control="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" Attributes="1048577" Text="[BannerBitmap]" Order="100"/>
+    <ROW Dialog_="ProgressDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="ProgressDlg#Cancel" Options="1"/>
+    <ROW Dialog_="ProgressDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Back]" Order="400" TextLocId="-" MsiKey="ProgressDlg#Back" Options="1"/>
+    <ROW Dialog_="ProgressDlg" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Next]" Order="500" TextLocId="-" MsiKey="ProgressDlg#Next" Options="1"/>
+    <ROW Dialog_="ProgressDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="600" MsiKey="ProgressDlg#BannerLine"/>
+    <ROW Dialog_="ProgressDlg" Control="ActionText" Type="Text" X="80" Y="100" Width="255" Height="10" Attributes="3" Order="700" MsiKey="ProgressDlg#ActionText"/>
+    <ROW Dialog_="ProgressDlg" Control="StatusLabel" Type="Text" X="35" Y="100" Width="45" Height="10" Attributes="3" Text="Status:" Order="800" TextLocId="Control.Text.ProgressDlg#StatusLabel" MsiKey="ProgressDlg#StatusLabel"/>
+    <ROW Dialog_="ProgressDlg" Control="ProgressBar" Type="ProgressBar" X="35" Y="115" Width="300" Height="10" Attributes="65537" Text="Progress done" Order="900" TextLocId="Control.Text.ProgressDlg#ProgressBar" MsiKey="ProgressDlg#ProgressBar"/>
+    <ROW Dialog_="ProgressDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_4" Text="Version: 11.0" Order="1000"/>
+    <ROW Dialog_="ProgressDlg" Control="Title" Type="Text" X="20" Y="15" Width="200" Height="15" Attributes="196611" Text="Installing CurrentWare Client" TextStyle="[DlgTitleFont]" Order="1100" TextLocId="Control.Text.ProgressDlg#Title"/>
+    <ROW Dialog_="ProgressDlg" Control="Text_3" Type="Text" X="35" Y="29" Width="193" Height="15" Attributes="65539" Property="TEXT_3_PROP_2" Text="CurrentWare Client is now being uninstalled." Order="1200"/>
+    <ROW Dialog_="ProgressDlg" Control="Text_1" Type="Text" X="35" Y="30" Width="218" Height="11" Attributes="65539" Property="TEXT_1_PROP_4" Text="CurrentWare Client is now being installed." Order="1300"/>
+    <ROW Dialog_="ProgressDlg" Control="Text_2" Type="Text" X="20" Y="15" Width="180" Height="11" Attributes="65539" Property="TEXT_2_PROP_2" Text="Uninstalling CurrentWare Client" TextStyle="DlgFontBold8" Order="1400"/>
+    <ROW Dialog_="ProgressDlg" Control="Text" Type="Text" X="35" Y="67" Width="300" Height="30" Attributes="3" Text="Please wait while the Setup Wizard is installing the CurrentWare Client. This may take several minutes. " Order="1500"/>
+    <ROW Dialog_="ProgressDlg" Control="Text_4" Type="Text" X="35" Y="67" Width="288" Height="33" Attributes="65539" Property="TEXT_4_PROP_2" Text="Please wait while the Setup Wizard is installing the CurrentWare Client. This may take several minutes. " Order="1600"/>
+    <ROW Dialog_="ResumeDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="ResumeDlg#Cancel" Options="1"/>
+    <ROW Dialog_="UserExit" Control="Finish" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Finish]" Order="100" TextLocId="-" MsiKey="UserExit#Finish" Options="1"/>
+    <ROW Dialog_="UserExit" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="1" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="UserExit#Cancel" Options="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Install" Type="PushButton" X="239" Y="243" Width="62" Height="17" Attributes="3" Text="[ButtonText_Install]" Order="100" TextLocId="-" MsiKey="VerifyReadyDlg#Install" Options="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="VerifyReadyDlg#Cancel" Options="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="500" TextLocId="-" MsiKey="VerifyReadyDlg#Back" Options="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Text" Type="Text" X="25" Y="70" Width="320" Height="40" Attributes="3" Text="Click &quot;Install&quot; to begin the installation.  If you want to review or change any of your installation settings, click &quot;Back&quot;.  Click &quot;Cancel&quot; to exit the wizard." Order="600" TextLocId="Control.Text.VerifyReadyDlg#Text" MsiKey="VerifyReadyDlg#Text"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Description" Type="Text" X="25" Y="23" Width="304" Height="15" Attributes="196611" Text="The [Wizard] is ready to begin the CurrentWare Client installation." Order="700" TextLocId="Control.Text.VerifyReadyDlg#Description" MsiKey="VerifyReadyDlg#Description"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="800" MsiKey="VerifyReadyDlg#BannerLine"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Title" Type="Text" X="15" Y="6" Width="304" Height="15" Attributes="196611" Text="Ready to Install" TextStyle="[DlgTitleFont]" Order="900" TextLocId="Control.Text.VerifyReadyDlg#Title" MsiKey="VerifyReadyDlg#Title"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_2" Text="Version: 11.0" Order="1000"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="300" TextLocId="-" MsiKey="VerifyRemoveDlg#Cancel" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Remove CurrentWare Client" TextStyle="DlgFontBold8" Order="600" TextLocId="Control.Text.VerifyRemoveDlg#Title" MsiKey="VerifyRemoveDlg#Title"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control="Text" Type="Text" X="25" Y="70" Width="320" Height="60" Attributes="3" Text="Click &quot;Remove&quot; to remove CurrentWare Client from your computer.  If you want to review or change any of your installation settings, click &quot;Back&quot;.  Click &quot;Cancel&quot; to exit the wizard." Order="700" TextLocId="Control.Text.VerifyRemoveDlg#Text" MsiKey="VerifyRemoveDlg#Text"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="You have chosen to remove the program from your computer." Order="800" TextLocId="Control.Text.VerifyRemoveDlg#Description" MsiKey="VerifyRemoveDlg#Description"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="900" MsiKey="VerifyRemoveDlg#BannerLine"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_6_3" Text="Version: 11.0" Order="1000"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="VerifyRepairDlg#Cancel" Options="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Back]" Order="500" TextLocId="-" MsiKey="VerifyRepairDlg#Back" Options="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Attributes="196611" Text="Repair CurrentWare Client [Setup]" TextStyle="DlgFontBold8" Order="600" TextLocId="Control.Text.VerifyRepairDlg#Title" MsiKey="VerifyRepairDlg#Title"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="Text" Type="Text" X="25" Y="70" Width="320" Height="60" Attributes="3" Text="Click &quot;Repair&quot; to repair the installation of CurrentWare Client.  If you want to review or change any of your installation settings, click &quot;Back&quot;.  Click &quot;Cancel&quot; to exit the wizard." Order="700" TextLocId="Control.Text.VerifyRepairDlg#Text" MsiKey="VerifyRepairDlg#Text"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Attributes="196611" Text="The [Wizard] is ready to begin the repair of CurrentWare Client." Order="800" TextLocId="Control.Text.VerifyRepairDlg#Description" MsiKey="VerifyRepairDlg#Description"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="BannerLine" Type="Line" X="0" Y="44" Width="372" Height="0" Attributes="1" Order="900" MsiKey="VerifyRepairDlg#BannerLine"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_6_1" Text="Version: 11.0" Order="1000"/>
+    <ROW Dialog_="WelcomeDlg" Control="Next" Type="PushButton" X="242" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Next]" Order="100" TextLocId="-" MsiKey="WelcomeDlg#Next" Options="1"/>
+    <ROW Dialog_="WelcomeDlg" Control="Cancel" Type="PushButton" X="303" Y="243" Width="56" Height="17" Attributes="3" Text="[ButtonText_Cancel]" Order="200" TextLocId="-" MsiKey="WelcomeDlg#Cancel" Options="1"/>
+    <ROW Dialog_="WelcomeDlg" Control="BottomLine" Type="Line" X="0" Y="234" Width="372" Height="0" Attributes="1" Order="500" MsiKey="WelcomeDlg#BottomLine"/>
+    <ROW Dialog_="WelcomeDlg" Control="Title" Type="Text" X="125" Y="13" Width="242" Height="55" Attributes="196611" Text="Welcome to the CurrentWare Client Installation Wizard" TextStyle="VerdanaBold13" Order="600" TextLocId="Control.Text.WelcomeDlg#Title"/>
+    <ROW Dialog_="WelcomeDlg" Control="Text_1" Type="Text" X="125" Y="73" Width="242" Height="37" Attributes="65539" Property="TEXT_1_PROP_2" Text="It is strongly recommended that you exit all Windows programs before running this setup program." Order="700"/>
+    <ROW Dialog_="WelcomeDlg" Control="Text_2" Type="Text" X="125" Y="104" Width="242" Height="37" Attributes="65539" Property="TEXT_2_PROP" Text="Click Cancel to quit the setup program, then close any programs you have running. Click Next to continue the installation." Order="800"/>
+    <ROW Dialog_="WelcomeDlg" Control="Text_3" Type="Text" X="125" Y="140" Width="242" Height="37" Attributes="65539" Property="TEXT_3_PROP" Text="WARNING: This program is protected by copyright law and international treaties." Order="900"/>
+    <ROW Dialog_="WelcomeDlg" Control="Text_4" Type="Text" X="125" Y="175" Width="242" Height="37" Attributes="65539" Property="TEXT_4_PROP_1" Text="Unauthorized reproduction or distribution of this program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under law." Order="1000"/>
+    <ROW Dialog_="WelcomeDlg" Control="Text_5" Type="Text" X="25" Y="252" Width="69" Height="17" Attributes="65539" Property="TEXT_2_PROP_3_3_1_3" Text="Version: 11.0" Order="1100"/>
+    <ATTRIBUTE name="DeletedRows" value="ExitDialog#Description@ExitDialog#LaunchProdText@ExitDialog#Title@ExitDialog#ViewReadmeText@FolderDlg#BannerBitmap@FolderDlg#BannerLine@FolderDlg#Browse@FolderDlg#Description@FolderDlg#FolderEdit@FolderDlg#FolderLabel@FolderDlg#Logo@FolderDlg#Text@FolderDlg#Title@MaintenanceTypeDlg#Logo@OutOfDiskDlg#Logo@OutOfRbDiskDlg#Logo@PrepareDlg#ActionData@PrepareDlg#ActionText@PrepareDlg#Description@PrepareDlg#Title@ProgressDlg#BannerBitmap@ProgressDlg#Logo@ProgressDlg#Text@ProgressDlg#Title@VerifyReadyDlg#Logo@VerifyRemoveDlg#Logo@VerifyRepairDlg#Logo@WelcomeDlg#Description@WelcomeDlg#Title"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlConditionComponent">
+    <ROW Dialog_="ProgressDlg" Control_="Title" Action="Hide" Condition="REMOVE=&quot;ALL&quot;"/>
+    <ROW Dialog_="ProgressDlg" Control_="Text_3" Action="Hide" Condition="REMOVE&lt;&gt;&quot;ALL&quot;"/>
+    <ROW Dialog_="ProgressDlg" Control_="Text_1" Action="Hide" Condition="REMOVE=&quot;ALL&quot;"/>
+    <ROW Dialog_="ProgressDlg" Control_="Text_2" Action="Hide" Condition="REMOVE&lt;&gt;&quot;ALL&quot;"/>
+    <ROW Dialog_="ProgressDlg" Control_="Text" Action="Hide" Condition="REMOVE=&quot;ALL&quot;"/>
+    <ROW Dialog_="ProgressDlg" Control_="Text_4" Action="Hide" Condition="REMOVE&lt;&gt;&quot;ALL&quot;"/>
+    <ATTRIBUTE name="DeletedRows" value="ExitDialog#LaunchProdText#Hide#((NOT AI_INSTALL) AND (NOT AI_PATCH)) OR ((CTRLS &lt;&gt; 2) AND (CTRLS &lt;&gt; 3))@ExitDialog#ViewReadmeText#Hide#(((NOT AI_INSTALL) AND (NOT AI_PATCH)) OR ((CTRLS &lt;&gt; 1) AND (CTRLS &lt;&gt; 3))) OR AiReadmeLink"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="204"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND CWCLIENT_EXISTS=&quot;0&quot;" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL AND CWCLIENT_EXISTS=&quot;0&quot;" Ordering="202"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL AND CWCLIENT_EXISTS=&quot;0&quot; AND ( CW_SERVER_IP AND ( CW_CLIENT_NEW_PWD = CW_CLIENT_CONFIRM_PWD) )" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL AND CWCLIENT_EXISTS=&quot;0&quot;" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="DoAction" Argument="ServerIP" Condition="AI_INSTALL AND CWCLIENT_EXISTS=&quot;0&quot; AND ( NOT CW_SERVER_IP )" Ordering="203"/>
+    <ROW Dialog_="ClientValidation" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="ClientValidation" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_MAINT AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="2"/>
+    <ROW Dialog_="ClientValidation" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_MAINT AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="3"/>
+    <ROW Dialog_="ClientValidation" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_MAINT AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="4"/>
+    <ROW Dialog_="ClientValidation" Control_="TemplateSeqDlgDialogInitializer" Event="[AI_ButtonText_Next_Orig]" Argument="[ButtonText_Next]" Condition="AI_MAINT" Ordering="0"/>
+    <ROW Dialog_="ClientValidation" Control_="TemplateSeqDlgDialogInitializer" Event="[ButtonText_Next]" Argument="[[AI_CommitButton]]" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="ClientValidation" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_MAINT" Ordering="0"/>
+    <ROW Dialog_="ClientValidation" Control_="Cancel" Event="SpawnDialog" Argument="CancelDlg" Condition="1" Ordering="100"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_1" Condition="AI_INSTALL AND CWCLIENT_EXISTS=&quot;0&quot; AND ( NOT CW_SERVER_IP )" Ordering="202"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="DoAction" Argument="Password" Condition="AI_INSTALL AND CWCLIENT_EXISTS=&quot;0&quot; AND ( CW_CLIENT_NEW_PWD &lt;&gt; CW_CLIENT_CONFIRM_PWD )" Ordering="205"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="DoAction" Argument="AI_DATA_SETTER_2" Condition="AI_INSTALL AND CWCLIENT_EXISTS=&quot;0&quot; AND ( CW_CLIENT_NEW_PWD &lt;&gt; CW_CLIENT_CONFIRM_PWD )" Ordering="204"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="DoAction" Argument="AI_InstallModeCheck" Condition="AI_MAINT" Ordering="100" MsiKey="CustomizeDlg#Next#DoAction#AI_InstallModeCheck#AI_MAINT"/>
+    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_SHOW_LOG" Condition="(MsiLogFileLocation AND AI_LOG_CHECKBOX)" Ordering="101" MsiKey="FatalError#Finish#DoAction#AI_SHOW_LOG#(MsiLogFileLocation AND AI_LOG_CHECKBOX)"/>
+    <ATTRIBUTE name="DeletedRows" value="FolderDlg#Browse#SpawnDialog#BrowseDlg#1@FolderDlg#Browse#[_BrowseProperty]#APPDIR#1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="Win764_Dir" Component_="Win764" ManualDelete="false"/>
+    <ROW Directory_="Win732_Dir" Component_="Win732" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_AiRemoveFilesCommit" Type="11777" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesCommit" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveFilesCommit_Impersonate" Type="9729" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesCommitImpersonate" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveFilesDeferred_Permanent" Type="11265" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesPermanent" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveFilesDeferred_Permanent_Impersonate" Type="9217" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesPermanentImpersonate" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveFilesDeferred_Undoable" Type="11265" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesUndoable" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveFilesDeferred_Undoable_Impersonate" Type="9217" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesUndoableImpersonate" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveFilesImmediate" Type="1" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesImmediate"/>
+    <ROW Action="AI_AiRemoveFilesRebootDeferred" Type="11265" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesRebootDeferred" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveFilesRebootImmediate" Type="1" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesRebootImmediate"/>
+    <ROW Action="AI_AiRemoveFilesRebootRollback" Type="11521" Source="ResourceCleaner.dll" Target="OnAiRemoveFilesRebootRollback" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveFilesRollback" Type="11521" Source="ResourceCleaner.dll" Target="OnAiUndoRemoveFiles" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveFilesRollback_Impersonate" Type="9473" Source="ResourceCleaner.dll" Target="OnAiUndoRemoveFilesImpersonate" WithoutSeq="true"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DATA_SETTER" Type="51" Source="CustomActionData" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DATA_SETTER_1" Type="51" Source="CustomActionData" Target="Please enter a valid IP Address or Computer Name of the computer where the CurrentWare Server is installed...! |CurrentWare Client |MB_OK,MB_ICONINFORMATION,MB_DEFBUTTON1|BTN_PRESSED|[CLIENTPROCESSID]"/>
+    <ROW Action="AI_DATA_SETTER_2" Type="51" Source="CustomActionData" Target="Password mismatch, please ensure that the new and confirm password entries are identical...! | CurrentWare Client | MB_OK , MB_ICONINFORMATION | BTN_PRESSED | [CLIENTPROCESSID]"/>
+    <ROW Action="AI_DATA_SETTER_3" Type="51" Source="CustomActionData" Target="[~]"/>
+    <ROW Action="AI_DATA_SETTER_4" Type="51" Source="CustomActionData" Target="[~]"/>
+    <ROW Action="AI_DATA_SETTER_5" Type="51" Source="CustomActionData" Target="param1=[UILevel]"/>
+    <ROW Action="AI_DATA_SETTER_6" Type="51" Source="CustomActionData" Target="param=[CW_INSTALLED]"/>
+    <ROW Action="AI_DATA_SETTER_7" Type="51" Source="CustomActionData" Target="param=[CW_SERVER_IP]"/>
+    <ROW Action="AI_DATA_SETTER_8" Type="51" Source="CustomActionData" Target="param=[CW_INSTALLED]"/>
+    <ROW Action="AI_DATA_SETTER_9" Type="51" Source="CustomActionData" Target="cwHelper"/>
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DeleteRCadLzma" Type="51" Source="AI_DeleteRLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteRLzma" Type="1281" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_ExtractCadLzma" Type="51" Source="AI_ExtractLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_ExtractFiles" Type="1" Source="Prereq.dll" Target="ExtractSourceFiles" AdditionalSeq="AI_DATA_SETTER"/>
+    <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
+    <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
+    <ROW Action="AI_FwConfig" Type="11265" Source="NetFirewall.dll" Target="OnFwConfig" WithoutSeq="true"/>
+    <ROW Action="AI_FwInstall" Type="1" Source="NetFirewall.dll" Target="OnFwInstall" AdditionalSeq="AI_DATA_SETTER_3"/>
+    <ROW Action="AI_FwRemove" Type="11265" Source="NetFirewall.dll" Target="OnFwRemove" WithoutSeq="true"/>
+    <ROW Action="AI_FwRollback" Type="11521" Source="NetFirewall.dll" Target="OnFwRollback" WithoutSeq="true"/>
+    <ROW Action="AI_FwUninstall" Type="1" Source="NetFirewall.dll" Target="OnFwUninstall" AdditionalSeq="AI_DATA_SETTER_4"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Type="65" Source="aicustact.dll" Target="PreserveInstallType"/>
+    <ROW Action="AI_REDIRECT_32BIT_FOLDER" Type="51" Source="AI_Bin32_Dir" Target="[APPDIR]"/>
+    <ROW Action="AI_REDIRECT_32BIT_SH_FOLDER" Type="51" Source="AI_Sh32_Dir" Target="[SHORTCUTDIR]"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH" Target="[AI_SETUPEXEPATH_ORIGINAL]"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="AiSkipExitDlg" Type="51" Source="AiSkipExitDlg" Target="1"/>
+    <ROW Action="ApplyTriggerToHelper" Type="1" Source="cwInstallAssist.dll" Target="ApplyTriggerToHelper"/>
+    <ROW Action="BackupClientFiles" Type="1" Source="cwInstallAssist.dll" Target="BackupClientFiles"/>
+    <ROW Action="CheckClientServiceStatus" Type="1" Source="cwInstallAssist.dll" Target="CheckClientServiceStatus"/>
+    <ROW Action="CheckKbStatus" Type="1" Source="cwInstallAssist.dll" Target="CheckKbStatus" AdditionalSeq="AI_DATA_SETTER_5"/>
+    <ROW Action="CopyClientDB" Type="1" Source="cwInstallAssist.dll" Target="CopyClientDB"/>
+    <ROW Action="DeleteClientRegKey" Type="1" Source="cwInstallAssist.dll" Target="DeleteClientRegKey"/>
+    <ROW Action="ErrorMessage" Type="19" Target="Uninstallation terminated!"/>
+    <ROW Action="ErrorMessage_1" Type="19" Target="CurrentWare is not supported on Windows XP, 2003."/>
+    <ROW Action="KillCWFiles" Type="1" Source="cwInstallAssist.dll" Target="KillCWFiles"/>
+    <ROW Action="Password" Type="1" Source="aicustact.dll" Target="MsgBox" WithoutSeq="true" Options="3" AdditionalSeq="AI_DATA_SETTER_2"/>
+    <ROW Action="Register64BitDll" Type="1" Source="cwInstallAssist64.dll" Target="RegisterClientDLLs"/>
+    <ROW Action="RegisterDll" Type="1" Source="cwInstallAssist.dll" Target="RegisterClientDLLs"/>
+    <ROW Action="RemoveClientDrivers" Type="1" Source="cwInstallAssist.dll" Target="RemoveClientDrivers"/>
+    <ROW Action="RemoveClientServices" Type="65" Source="cwInstallAssist.dll" Target="RemoveClientServices"/>
+    <ROW Action="RevertClientFiles" Type="1" Source="cwInstallAssist.dll" Target="RevertClientFiles"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[SystemFolder]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+    <ROW Action="ServerIP" Type="1" Source="aicustact.dll" Target="MsgBox" WithoutSeq="true" Options="3" AdditionalSeq="AI_DATA_SETTER_1"/>
+    <ROW Action="ServiceStart" Type="1" Source="cwInstallAssist.dll" Target="ServiceStart"/>
+    <ROW Action="ServiceStop" Type="1" Source="cwInstallAssist.dll" Target="ServiceStop"/>
+    <ROW Action="SetProperty" Type="51" Source="CW_SERVER_IP" Target="[CW_SERVER_IP]"/>
+    <ROW Action="SetProperty_1" Type="51" Source="CW_PARAMS" Target="-p [CW_CLIENT_PWD] -ds [CW_SERVER_IP] -rp [CW_CLIENT_NEW_PWD] -sp [CW_CLIENT_CONFIRM_PWD] -g [GRPNAME]"/>
+    <ROW Action="SetProperty_3" Type="51" Source="AI_INSTALL" Target="1"/>
+    <ROW Action="SetProperty_4" Type="51" Source="CW_PARAMS" Target="[USERPARAMS]"/>
+    <ROW Action="StopClientDrivers" Type="1" Source="cwInstallAssist.dll" Target="StopClientDrivers"/>
+    <ROW Action="StopService" Type="65" Source="aicustact.dll" Target="StopWinService" Options="1" AdditionalSeq="AI_DATA_SETTER_9"/>
+    <ROW Action="UpdateServerDetails" Type="65" Source="cwInstallAssist.dll" Target="UpdateServerDetails" AdditionalSeq="AI_DATA_SETTER_7"/>
+    <ROW Action="UpdateServerNameKey" Type="1" Source="cwInstallAssist.dll" Target="UpdateServerNameKey" AdditionalSeq="AI_DATA_SETTER_6"/>
+    <ROW Action="UpdateServerPortKey" Type="1" Source="cwInstallAssist.dll" Target="UpdateServerPortKey" AdditionalSeq="AI_DATA_SETTER_8"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDialogComponent">
+    <ROW Dialog="CancelDlg" HCentering="50" VCentering="50" Width="260" Height="85" Attributes="3" Title="CurrentWare Client [Setup]" Control_Default="No" Control_Cancel="No" TitleLocId="Dialog.CancelDlg" MsiKey="CancelDlg"/>
+    <ROW Dialog="ClientValidation" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="CurrentWare Client [Setup]" Control_Default="Next" Control_Cancel="Cancel"/>
+    <ROW Dialog="ExitDialog" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="CurrentWare Client [Setup]" Control_Default="Finish" Control_Cancel="Finish" TitleLocId="Dialog.ExitDialog" MsiKey="ExitDialog"/>
+    <ROW Dialog="FolderDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="39" Title="CurrentWare Client [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.FolderDlg" MsiKey="FolderDlg"/>
+    <ROW Dialog="MaintenanceTypeDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="CurrentWare Client [Setup]" Control_Default="ChangeButton" Control_Cancel="Cancel" TitleLocId="Dialog.MaintenanceTypeDlg" MsiKey="MaintenanceTypeDlg"/>
+    <ROW Dialog="OutOfDiskDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="CurrentWare Client [Setup]" Control_Default="OK" Control_Cancel="OK" TitleLocId="Dialog.OutOfDiskDlg" MsiKey="OutOfDiskDlg"/>
+    <ROW Dialog="OutOfRbDiskDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="CurrentWare Client [Setup]" Control_Default="No" Control_Cancel="No" TitleLocId="Dialog.OutOfRbDiskDlg" MsiKey="OutOfRbDiskDlg"/>
+    <ROW Dialog="PrepareDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="1" Title="CurrentWare Client [Setup]" Control_Default="Cancel" Control_Cancel="Cancel" TitleLocId="Dialog.PrepareDlg" MsiKey="PrepareDlg"/>
+    <ROW Dialog="ProgressDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="1" Title="CurrentWare Client [Setup]" Control_Default="Cancel" Control_Cancel="Cancel" TitleLocId="Dialog.ProgressDlg" MsiKey="ProgressDlg"/>
+    <ROW Dialog="VerifyReadyDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="35" Title="CurrentWare Client [Setup]" Control_Default="Install" Control_Cancel="Cancel" TitleLocId="Dialog.VerifyReadyDlg" MsiKey="VerifyReadyDlg"/>
+    <ROW Dialog="VerifyRemoveDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="35" Title="CurrentWare Client [Setup]" Control_Default="Back" Control_Cancel="Cancel" TitleLocId="Dialog.VerifyRemoveDlg" MsiKey="VerifyRemoveDlg"/>
+    <ROW Dialog="VerifyRepairDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="35" Title="CurrentWare Client [Setup]" Control_Default="Repair" Control_Cancel="Cancel" TitleLocId="Dialog.VerifyRepairDlg" MsiKey="VerifyRepairDlg"/>
+    <ROW Dialog="WelcomeDlg" HCentering="50" VCentering="50" Width="370" Height="270" Attributes="3" Title="CurrentWare Client [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg" MsiKey="WelcomeDlg"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDrLocatorComponent">
+    <ROW Signature_="FileSearchSign_1" Path="[SystemFolder]" Depth="0"/>
+    <ROW Signature_="FileSearchSign" Path="[SystemFolder]" Depth="0"/>
+    <ROW Signature_="FileSearchSign_2" Path="[SystemFolder]" Depth="0"/>
+    <ROW Signature_="FileSearchSign_3" Path="[SystemFolder]" Depth="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiEventMappingComponent">
+    <ATTRIBUTE name="DeletedRows" value="PrepareDlg#ActionData#ActionData@PrepareDlg#ActionText#ActionText"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
+    <ROW Feature_="AI32BitFiles" Component_="apfddrv.sys_1"/>
+    <ROW Feature_="AI32BitFiles" Component_="npf.sys_1"/>
+    <ROW Feature_="AI32BitFiles" Component_="ntwrcb.sys"/>
+    <ROW Feature_="AI64BitFiles" Component_="apfddrv.cat"/>
+    <ROW Feature_="AI64BitFiles" Component_="apfddrv.cat_1"/>
+    <ROW Feature_="AI64BitFiles" Component_="apfddrv.sys"/>
+    <ROW Feature_="AI64BitFiles" Component_="apfddrv.sys_2"/>
+    <ROW Feature_="AI64BitFiles" Component_="npf.sys"/>
+    <ROW Feature_="AI64BitFiles" Component_="ntwbfs.cat"/>
+    <ROW Feature_="AI64BitFiles" Component_="ntwbfs.sys"/>
+    <ROW Feature_="AI64BitFiles" Component_="ntwkbs32.cat"/>
+    <ROW Feature_="AI64BitFiles" Component_="ntwkbs32.sys"/>
+    <ROW Feature_="AI64BitFiles" Component_="ntwkbs64.cat"/>
+    <ROW Feature_="AI64BitFiles" Component_="ntwkbs64.sys"/>
+    <ROW Feature_="AIOtherFiles" Component_="GrantAccess.exe_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="KomodiaClassificationDLL.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="OdbcFb.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="Packet.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="StartService.EXE_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="WinDivert.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="WinDivert.inf"/>
+    <ROW Feature_="AIOtherFiles" Component_="WinDivert32.sys"/>
+    <ROW Feature_="AIOtherFiles" Component_="autoconfig.js"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwAgent.exe_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwClient.exe_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwHelper.exe_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwHelper.log"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwIAcc32.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwMetroClient.exe_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwTrack.exe_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="ib6xtg10.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="mozilla.cfg"/>
+    <ROW Feature_="AIOtherFiles" Component_="pthreadVC.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="wc2b.fdk"/>
+    <ROW Feature_="AIOtherFiles" Component_="wsck32.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="zlib1.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="zlibwapi.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwCPA.cpl_2"/>
+    <ROW Feature_="AIOtherFiles" Component_="Win764"/>
+    <ROW Feature_="AIOtherFiles" Component_="Win732"/>
+    <ROW Feature_="AI64BitFiles" Component_="cwAgent64.exe"/>
+    <ROW Feature_="AI64BitFiles" Component_="cwBcp64.exe"/>
+    <ROW Feature_="AI64BitFiles" Component_="cwIAcc64.dll"/>
+    <ROW Feature_="AI64BitFiles" Component_="WinDivert64.cat"/>
+    <ROW Feature_="AI64BitFiles" Component_="wsck64.dll"/>
+    <ROW Feature_="AI64BitFiles" Component_="WinDivert64.sys_1"/>
+    <ROW Feature_="AI64BitFiles" Component_="WinDivert64.sys"/>
+    <ROW Feature_="AI64BitFiles" Component_="WinDivert64.sys_2"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwBcp32.exe"/>
+    <ROW Feature_="AIOtherFiles" Component_="OdbcFb.dll"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwClient.exe"/>
+    <ROW Feature_="AI64BitFiles" Component_="cwdrvft.cat"/>
+    <ROW Feature_="AI32BitFiles" Component_="cwDrvFt.sys"/>
+    <ROW Feature_="AI32BitFiles" Component_="cwDrvFt.Inf"/>
+    <ROW Feature_="AI32BitFiles" Component_="cwdrvft.cat_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="wc2bbw.fdk"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwUserReport.exe"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwClientUtility.exe"/>
+    <ROW Feature_="AI64BitFiles" Component_="apfddrv.cat_2"/>
+    <ROW Feature_="AI64BitFiles" Component_="apfddrv.sys_3"/>
+    <ROW Feature_="AI64BitFiles" Component_="apfddrv.cat_3"/>
+    <ROW Feature_="AI64BitFiles" Component_="apfddrv.sys_4"/>
+    <ROW Feature_="AIOtherFiles" Component_="libcrypto3.dll"/>
+    <ROW Feature_="AIOtherFiles" Component_="libssl3.dll"/>
+    <ROW Feature_="AIOtherFiles" Component_="nfapi.dll"/>
+    <ROW Feature_="AIOtherFiles" Component_="ProtocolFilters.dll"/>
+    <ROW Feature_="AI64BitFiles" Component_="advnfcw.sys"/>
+    <ROW Feature_="AI64BitFiles" Component_="advnfcw.sys_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="wcrb.cwk"/>
+    <ROW Feature_="AIOtherFiles" Component_="wcrbbw.cwk"/>
+    <ROW Feature_="AIOtherFiles" Component_="npptools.dll"/>
+    <ROW Feature_="AIOtherFiles" Component_="COMCatLookup.dll"/>
+    <ROW Feature_="AIOtherFiles" Component_="System"/>
+    <ROW Feature_="AIOtherFiles" Component_="CurrentControlSet"/>
+    <ROW Feature_="AIOtherFiles" Component_="Services"/>
+    <ROW Feature_="AIOtherFiles" Component_="seclevel"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwWorkerProcess.exe"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwLocClient.exe"/>
+    <ROW Feature_="AIOtherFiles" Component_="mfc110.dll"/>
+    <ROW Feature_="AIOtherFiles" Component_="msvcp110.dll"/>
+    <ROW Feature_="AIOtherFiles" Component_="msvcr110.dll"/>
+    <ROW Feature_="AIOtherFiles" Component_="mfc110.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="msvcp110.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="msvcr110.dll_1"/>
+    <ROW Feature_="AIOtherFiles" Component_="AI_ExePath"/>
+    <ROW Feature_="AIOtherFiles" Component_="TenantID"/>
+    <ROW Feature_="AIOtherFiles" Component_="TENANT_ENDPOINT"/>
+    <ROW Feature_="AIOtherFiles" Component_="CONNECTIVITY_MODE"/>
+    <ROW Feature_="AIOtherFiles" Component_="cwClientSAS"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="insticon.exe" SourcePath="Scripts\insticon.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="747"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1397"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="56"/>
+    <ROW Action="AI_REDIRECT_32BIT_FOLDER" Condition="NOT VersionNT64 AND NOT AI_Disable32BitRedirection" Sequence="702"/>
+    <ROW Action="AI_REDIRECT_32BIT_SH_FOLDER" Condition="NOT VersionNT64 AND NOT AI_Disable32BitRedirection" Sequence="701"/>
+    <ROW Action="SetProperty_1" Condition="( NOT Installed ) AND ( UILevel &lt;&gt; 2 AND CWCLIENT_EXISTS = &quot;0&quot; )" Sequence="1604"/>
+    <ROW Action="AI_FwInstall" Condition="(VersionNT &gt;= 501) AND (REMOVE &lt;&gt; &quot;ALL&quot;)" Sequence="5849"/>
+    <ROW Action="AI_FwUninstall" Condition="(VersionNT &gt;= 501) AND (REMOVE=&quot;ALL&quot;)" Sequence="1699"/>
+    <ROW Action="SetProperty_4" Condition="( NOT Installed ) AND ( UILevel = 2 )" Sequence="1605"/>
+    <ROW Action="ErrorMessage" Condition="( Installed AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; ) ) AND ( REMOVE=&quot;ALL&quot; AND PWD &lt;&gt; &quot;F0E541E42B81&quot; AND UPGRADINGPRODUCTCODE=&quot;&quot; )" Sequence="1201"/>
+    <ROW Action="AI_DATA_SETTER_3" Condition="(VersionNT &gt;= 501) AND (REMOVE &lt;&gt; &quot;ALL&quot;)" Sequence="5848"/>
+    <ROW Action="AI_DATA_SETTER_4" Condition="(VersionNT &gt;= 501) AND (REMOVE=&quot;ALL&quot;)" Sequence="1698"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="53"/>
+    <ROW Action="SetProperty" Condition="( NOT Installed )" Sequence="1602"/>
+    <ROW Action="DeleteClientRegKey" Condition="( Installed AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; ) AND NOT UPGRADINGPRODUCTCODE )" Sequence="1603"/>
+    <ROW Action="CopyClientDB" Condition="( NOT Installed AND NOT OLDPRODUCTS )" Sequence="6604"/>
+    <ROW Action="ApplyTriggerToHelper" Condition="( NOT Installed )" Sequence="6607"/>
+    <ROW Action="ServiceStop" Condition="( NOT Installed AND OLDPRODUCTS ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="211"/>
+    <ROW Action="KillCWFiles" Condition="( NOT Installed AND OLDPRODUCTS ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="212"/>
+    <ROW Action="UpdateServerNameKey" Condition="( NOT Installed AND OLDPRODUCTS ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="217"/>
+    <ROW Action="AI_DATA_SETTER_6" Condition="( NOT Installed AND OLDPRODUCTS ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="216"/>
+    <ROW Action="UpdateServerPortKey" Condition="( NOT Installed AND OLDPRODUCTS ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="219"/>
+    <ROW Action="AI_DATA_SETTER_8" Condition="( NOT Installed AND OLDPRODUCTS ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="218"/>
+    <ROW Action="BackupClientFiles" Condition="( NOT Installed AND OLDPRODUCTS ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="220"/>
+    <ROW Action="ServiceStart" Condition="( NOT Installed )" Sequence="6608"/>
+    <ROW Action="CheckClientServiceStatus" Condition="( NOT Installed AND OLDPRODUCTS ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="213"/>
+    <ROW Action="StopClientDrivers" Condition="( NOT Installed ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="214"/>
+    <ROW Action="RemoveClientDrivers" Condition="( Installed AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; ) AND NOT UPGRADINGPRODUCTCODE )" Sequence="1601"/>
+    <ROW Action="AI_AiRemoveFilesRollback" Sequence="3099"/>
+    <ROW Action="RevertClientFiles" Condition="( NOT Installed AND OLDPRODUCTS ) AND ( CWCLIENT_EXISTS &lt;&gt; &quot;0&quot; )" Sequence="6603"/>
+    <ROW Action="RemoveClientServices" Condition="( NOT Installed )" Sequence="215"/>
+    <ROW Action="RegisterDll" Condition="( NOT Installed )" Sequence="6605"/>
+    <ROW Action="Register64BitDll" Condition="( NOT Installed ) AND ( VersionNT64 )" Sequence="6606"/>
+    <ROW Action="AI_AiRemoveFilesRebootImmediate" Sequence="3498"/>
+    <ROW Action="AI_DETECT_MODERNWIN" Condition="(VersionNT &gt;= 603)" Sequence="54" MsiKey="AI_DETECT_MODERNWIN"/>
+    <ROW Action="AI_DETECT_WINTHEME" Condition="(VersionNT &gt;= 603)" Sequence="55" MsiKey="AI_DETECT_WINTHEME"/>
+    <ROW Action="StopService" Condition="( Installed AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; ) )" Sequence="52"/>
+    <ROW Action="AI_DATA_SETTER_9" Condition="( Installed AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; ) )" Sequence="51"/>
+    <ROW Action="UpdateServerDetails" Condition="( NOT Installed AND NOT OLDPRODUCTS )" Sequence="6602"/>
+    <ROW Action="AI_DATA_SETTER_7" Condition="( NOT Installed AND NOT OLDPRODUCTS )" Sequence="6601"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99" Builds="DefaultBuild"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="199" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="198" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="197" Builds="DefaultBuild"/>
+    <ROW Action="AI_FindExeLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="196" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractFiles" Sequence="1399" Builds="DefaultBuild"/>
+    <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
+    <ROW Action="AI_AiRemoveFilesImmediate" Sequence="3499"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="747"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="MaintenanceTypeDlg" Condition="AI_MAINT AND (NOT AI_MAINT)" Sequence="1248" SeqType="3" MsiKey="MaintenanceWelcomeDlg"/>
+    <ROW Action="PrepareDlg" Condition="1 AND (NOT AI_MAINT)" Sequence="74" SeqType="3" MsiKey="PrepareDlg"/>
+    <ROW Action="ProgressDlg" Condition="1 AND (NOT AI_MAINT)" Sequence="1280" SeqType="3" MsiKey="ProgressDlg"/>
+    <ROW Action="ExecuteAction" Condition="(NOT AI_MAINT)" Sequence="1300" SeqType="0" MsiKey="ExecuteAction"/>
+    <ROW Action="ClientValidation" Condition="AI_MAINT" Sequence="1251" SeqType="3"/>
+    <ROW Action="SetProperty_3" Condition="AI_MAINT" Sequence="1301"/>
+    <ROW Action="AiSkipExitDlg" Condition="AI_MAINT" Sequence="1302"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="ErrorMessage_1" Condition="( NOT Installed ) AND ( (VersionNT = 501 OR VersionNT64 = 501) OR (VersionNT= 502 OR VersionNT64 = 502) )" Sequence="1101"/>
+    <ROW Action="CheckKbStatus" Condition="( NOT Installed AND NOT OLDPRODUCTS ) AND ( (VersionNT64 = 601 AND MsiNTProductType &lt;&gt; 1) OR (VersionNT64 = 601 AND MsiNTProductType = 1) )" Sequence="202"/>
+    <ROW Action="AI_DATA_SETTER_5" Condition="( NOT Installed AND NOT OLDPRODUCTS ) AND ( (VersionNT64 = 601 AND MsiNTProductType &lt;&gt; 1) OR (VersionNT64 = 601 AND MsiNTProductType = 1) )" Sequence="201"/>
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT40Display]" DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 600)" Description="[ProductName] cannot be installed on [WindowsTypeNT60Display]." DescriptionLocId="AI.LaunchCondition.NoNT60" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="SETUPEXEDIR OR (REMOVE=&quot;ALL&quot;)" Description="This package can only be run from a bootstrapper." DescriptionLocId="AI.LaunchCondition.RequireBootstrapper" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
+    <ROW Signature_="AI_EXE_PATH_CU" Root="1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+    <ROW Signature_="AI_EXE_PATH_LM" Root="2" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
+    <ROW Registry="AdvancedInstaller" Root="-1" Key="Software\Caphyon\Advanced Installer" Name="\"/>
+    <ROW Registry="CONNECTIVITY_MODE" Root="2" Key="Software\[Manufacturer]\[ProductName]\cwClientSAS" Name="CONNECTIVITY_MODE" Component_="CONNECTIVITY_MODE"/>
+    <ROW Registry="Caphyon" Root="-1" Key="Software\Caphyon" Name="\"/>
+    <ROW Registry="CurrentControlSet" Root="2" Key="System\CurrentControlSet" Name="+" Component_="CurrentControlSet"/>
+    <ROW Registry="LZMA" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA" Name="\"/>
+    <ROW Registry="Manufacturer" Root="2" Key="Software\[Manufacturer]" Name="\"/>
+    <ROW Registry="ProductCode" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]" Name="\"/>
+    <ROW Registry="ProductName" Root="2" Key="Software\[Manufacturer]\[ProductName]" Name="\"/>
+    <ROW Registry="ProductVersion" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="\"/>
+    <ROW Registry="Services" Root="2" Key="System\CurrentControlSet\Services" Name="+" Component_="Services"/>
+    <ROW Registry="Software" Root="-1" Key="Software" Name="\"/>
+    <ROW Registry="Software_1" Root="2" Key="Software" Name="\"/>
+    <ROW Registry="System" Root="2" Key="System" Name="+" Component_="System"/>
+    <ROW Registry="TENANT_ENDPOINT" Root="2" Key="Software\[Manufacturer]\[ProductName]\cwClientSAS" Name="TENANT_ENDPOINT" Component_="TENANT_ENDPOINT"/>
+    <ROW Registry="TenantID" Root="2" Key="Software\[Manufacturer]\[ProductName]\cwClientSAS" Name="TenantID" Component_="TenantID"/>
+    <ROW Registry="advnfcw" Root="2" Key="System\CurrentControlSet\Services\advnfcw" Name="\"/>
+    <ROW Registry="cwClientSAS" Root="2" Key="Software\[Manufacturer]\[ProductName]\cwClientSAS" Name="*" Component_="cwClientSAS"/>
+    <ROW Registry="seclevel" Root="2" Key="System\CurrentControlSet\Services\advnfcw" Name="seclevel" Value="1" Component_="seclevel"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRemoveFileComponent">
+    <ROW FileKey="COMCatLookup.dll" Component_="COMCatLookup.dll" FileName="COMCatLookup.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="GDS32.DLL" Component_="cwClient.exe" FileName="GDS32.DLL" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="GrantAccess.exe" Component_="cwClient.exe" FileName="GrantAccess.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="KomodiaClassificationDLL.dll" Component_="cwClient.exe" FileName="KomodiaClassificationDLL.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="OdbcFb.dll" Component_="cwClient.exe" FileName="OdbcFb.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="Packet.dll" Component_="cwClient.exe" FileName="Packet.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="ProtocolFilters.dll" Component_="cwClient.exe" FileName="ProtocolFilters.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="StartService.EXE" Component_="cwClient.exe" FileName="StartService.EXE" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="WinDivert.dll" Component_="cwClient.exe" FileName="WinDivert.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwAgent.exe" Component_="cwClient.exe" FileName="cwAgent.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwAgent64.exe" Component_="cwClient.exe" FileName="cwAgent64.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwBWTRK.exe" Component_="cwClient.exe" FileName="cwBWTRK.exe" DirProperty="NewFolder_2_Dir" InstallMode="3"/>
+    <ROW FileKey="cwBcp64.exe" Component_="cwClient.exe" FileName="cwBcp64.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwCPA.cpl" Component_="cwClient.exe" FileName="cwCPA.cpl" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwClient.exe" Component_="cwClient.exe" FileName="cwClient.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwHelper.exe" Component_="cwClient.exe" FileName="cwHelper.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwIAcc.dll" Component_="cwClient.exe" FileName="cwIAcc.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwIAcc32.dll" Component_="cwClient.exe" FileName="cwIAcc32.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwLocClient.exe" Component_="cwLocClient.exe" FileName="cwLocClient.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwMetroClient.exe" Component_="cwClient.exe" FileName="cwMetroClient.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwTrack.exe" Component_="cwClient.exe" FileName="cwTrack.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="cwWorkerProcess.exe" Component_="cwClient.exe" FileName="cwWorkerProcess.exe" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="ib6xtg10.dll" Component_="cwClient.exe" FileName="ib6xtg10.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="libcrypto3.dll" Component_="cwClient.exe" FileName="libcrypto-3.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="libssl3.dll" Component_="cwClient.exe" FileName="libssl-3.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="mozilla.cfg" Component_="cwClient.exe" FileName="mozilla.cfg" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="nfapi.dll" Component_="cwClient.exe" FileName="nfapi.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="npptools.dll" Component_="npptools.dll" FileName="npptools.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="pthreadVC.dll" Component_="cwClient.exe" FileName="pthreadVC.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="wc2b.fdk" Component_="cwClient.exe" FileName="wc2b.fdk" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="wc2bbw.fdk" Component_="cwClient.exe" FileName="wc2bbw.fdk" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="wcrb.cwk" Component_="cwClient.exe" FileName="wcrb.cwk" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="wcrb.ldb" Component_="cwClient.exe" FileName="wcrb.ldb" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="wcrbbw.cwk" Component_="cwClient.exe" FileName="wcrbbw.cwk" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="wcrbbw.ldb" Component_="cwClient.exe" FileName="wcrbbw.ldb" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="wsck32.dll" Component_="cwClient.exe" FileName="wsck32.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="zlib1.dll" Component_="cwClient.exe" FileName="zlib1.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+    <ROW FileKey="zlibwapi.dll" Component_="cwClient.exe" FileName="zlibwapi.dll" DirProperty="NewFolder_2_Dir" InstallMode="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiServCtrlComponent">
+    <ROW ServiceControl="cwClient.exe" Name="cwClient" Event="162" Wait="0" Component_="cwClient.exe_1"/>
+    <ROW ServiceControl="cwHelper.exe" Name="cwHelper" Event="161" Wait="0" Component_="cwHelper.exe_1"/>
+    <ROW ServiceControl="cwLocClient.exe" Name="cwLocClient" Event="160" Wait="0" Component_="cwLocClient.exe"/>
+    <ROW ServiceControl="cwMetroClient.exe" Name="cwMetroClient" Event="160" Wait="0" Component_="cwMetroClient.exe_1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiServInstComponent">
+    <ROW ServiceInstall="cwClient.exe" Name="cwClient" DisplayName="CurrentWare Client" ServiceType="16" StartType="2" ErrorControl="0" Dependencies="RpcSs[~][~]" Arguments="[CW_PARAMS]" Component_="cwClient.exe_1" Description="CurrentWare Client  Service "/>
+    <ROW ServiceInstall="cwHelper.exe" Name="cwHelper" DisplayName="CurrentWare Helper" ServiceType="16" StartType="2" ErrorControl="0" Component_="cwHelper.exe_1" Description="CurrentWare Helper  Service "/>
+    <ROW ServiceInstall="cwLocClient.exe" Name="cwLocClient" DisplayName="CurrentWare Work Session" ServiceType="16" StartType="3" ErrorControl="0" Component_="cwLocClient.exe" Description="CurrentWare Work Session Check-in Service"/>
+    <ROW ServiceInstall="cwMetroClient.exe" Name="cwMetroClient" DisplayName="CurrentWare MetroClient" ServiceType="16" StartType="2" ErrorControl="0" Component_="cwMetroClient.exe_1" Description="Currentware MetroClient Service"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiSignatureComponent">
+    <ROW Signature="FileSearchSign" FileName="cwAcpTrl.exe"/>
+    <ROW Signature="FileSearchSign_1" FileName="cwClient.exe"/>
+    <ROW Signature="FileSearchSign_2" FileName="cwClient.exe" MinVersion="1.0.0.0" MaxVersion="3.9.0.0"/>
+    <ROW Signature="FileSearchSign_3" FileName="cwBrRpt.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiTextStyleComponent">
+    <ROW TextStyle="Alert" FaceName="Tahoma" Size="8" Color="255" StyleBits="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMax="[|ProductVersion]" Attributes="1025" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+    <ROW UpgradeCode="{9A3EB716-D1AD-40B7-8ECD-A55B0A9AC0FB}" VersionMin="4.1.0.5" VersionMax="4.2.0.5" Language="1033" Attributes="773" ActionProperty="UPGRADE_1"/>
+    <ROW UpgradeCode="{436BADDC-785C-44FF-ADC0-BEA88A509EC3}" VersionMin="4.1.0.5" VersionMax="4.2.0.5" Language="1033" Attributes="773" ActionProperty="UPGRADE_2"/>
+    <ROW UpgradeCode="{6A673738-74E9-4B6D-AAF7-76E84D70ABD3}" VersionMin="4.0.0.0" VersionMax="4.1.0.4" Language="1033" Attributes="773" ActionProperty="UPGRADE_3"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MultipleInstancesComponent">
+    <ATTRIBUTE name="DynamicInstances" value="DefaultBuild:"/>
+  </COMPONENT>
+  <REGISTRY>
+    <ROW Root="HKLM" Key="Software\Currentware\CWAgent" Name="TenantId" Value="{{tenant_id}}" Type="string" Component="RegistryComponent" />
+    <ROW Root="HKLM" Key="Software\Currentware\CWAgent" Name="BackendURL" Value="{{backend_url}}" Type="string" Component="RegistryComponent" />
+  </REGISTRY>
+</DOCUMENT>
