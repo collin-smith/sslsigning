@@ -35,21 +35,33 @@ jobs:
           echo "Tenant ID: ${{ github.event.inputs.Tenant_id }}"
           echo "URL: ${{ github.event.inputs.url }}"
           
-      - name: Replace Placeholders and Display File
+      - name: Debug and Replace
         run: |
-          # Define the exact relative path from the repo root
-          FILE_PATH="template/cwClient.aip"
+          echo "--- Current Directory ---"
+          pwd
+          
+          echo "--- Listing All Files in Repo ---"
+          ls -R
+          
+          # This command will find the REAL path, even if it's 'Template' or 'sslsigning/template'
+          REAL_PATH=$(find . -name "cwClient.aip")
+          
+          if [ -z "$REAL_PATH" ]; then
+            echo "❌ ERROR: Could not find cwClient.aip anywhere in the checkout!"
+            exit 1
+          fi
 
-          # Perform the replacements using '|' as a delimiter to handle URLs
-          sed -i "s|{{tenant_id}}|${{ github.event.inputs.Tenant_id }}|g" "$FILE_PATH"
-          sed -i "s|{{backend_url}}|${{ github.event.inputs.url }}|g" "$FILE_PATH"
+          echo "Found file at: $REAL_PATH"
 
-          echo "✅ Successfully updated $FILE_PATH"
+          # Perform replacements on the path we just found
+          sed -i "s|{{tenant_id}}|${{ github.event.inputs.Tenant_id }}|g" "$REAL_PATH"
+          sed -i "s|{{backend_url}}|${{ github.event.inputs.url }}|g" "$REAL_PATH"
 
-          # Display the contents in a clickable group in the logs
-          echo "::group::View updated cwClient.aip contents"
-          cat "$FILE_PATH"
-          echo "::endgroup::"         
+          echo "✅ Successfully updated $REAL_PATH"
+          
+          echo "::group::View updated file contents"
+          cat "$REAL_PATH"
+          echo "::endgroup::"
           
       # 1) Check out the source code
       - name: Checkout Repository
@@ -127,6 +139,7 @@ jobs:
               },
               "CallerReference": "'"${TIMESTAMP}"'"
             }'
+
 
 
 
